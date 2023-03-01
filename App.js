@@ -1,7 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-//import '@picocss/pico'
-import { DarkTheme } from '@react-navigation/native';
+
 export default function App() {
   return (
     <View style={styles.container}>
@@ -18,6 +17,5 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-    DarkTheme: true
   },
 });
