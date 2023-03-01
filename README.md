@@ -1,8 +1,7 @@
 # GottaGo
-Install dependencies
-
-Run npx expo start
 
 
-download expo app
-scan qr code
+* Install dependencies
+* Run 'npx expo start'
+* Download expo app
+* Scan qr code
