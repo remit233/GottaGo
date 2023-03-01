@@ -1,10 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-
+//import '@picocss/pico'
+import { DarkTheme } from '@react-navigation/native';
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+      <Text>Hewwo :3</Text>
+      <Text>Welcome to Bathroom Tracker</Text>
       <StatusBar style="auto" />
     </View>
   );
@@ -16,5 +18,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+    DarkTheme: true
   },
 });
