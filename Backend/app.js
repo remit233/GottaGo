@@ -2,6 +2,12 @@ const express = require('express')
 const app = express()
 const port = 3000
 
+const bathroomRouter = require('./routes/bathroom')
+
+
+app.use('/bathroom', bathroomRouter)
+
+
 app.get('/', (req, res) => {
   res.send('Hello World!')
 })
