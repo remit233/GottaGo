@@ -39,3 +39,13 @@ CREATE TABLE bathrooms(
     description TEXT,
     created_at TIMESTAMP NOT NULL DEFAULT NOW()
 );
+
+CREATE TABLE monsters(
+    id SERIAL PRIMARY KEY,
+    name TEXT NOT NULL,
+    rarity TEXT,
+    size INT,
+    health INT,
+    attack INT,
+    created_at TIMESTAMP NOT NULL DEFAULT NOW()
+);
