@@ -13,7 +13,7 @@ router.get('/', async (req, res) => {
 })
 
 router.get('/near-me', async (req, res, next) => {
-    const locations = await Bathroom.getBathrooms(req.params);
+    const locations = await Bathroom.getBathroom(req.params);
     return res.status(200).json(locations);
 })
 
