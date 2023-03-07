@@ -1,6 +1,6 @@
 class User {
     static async createUser() {
-
+        
     }
 
     static async readUser() {
