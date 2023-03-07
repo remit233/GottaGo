@@ -20,7 +20,7 @@ router.put('/update', async (req, res) => {
 
 router.delete('/delete', async (req, res) => {
     const deletedBathroom = await Bathroom.deleteBathroom(req.params);
-    return res.status(200).json({"Bathroom Entry":"Deleted"})
+    return res.status(200).json({"Bathroom":"Deleted"})
 })
 
 module.exports = router;

@@ -1,26 +1,26 @@
 const express = require('express');
 const router = express.Router();
 
-const Bathroom = require('../models/bathroom');
+const User = require('../models/user');
 
 router.post('/create', async(req, res) => {
-    const newBathroom = await Bathroom.createBathroom(req.body);
-    return res.status(201).json(newBathroom);
+    const newUser = await User.createUser(req.body);
+    return res.status(201).json(newUser);
 })
 
 router.get('/read', async (req, res) => {
-    const bathroomInfo = await Bathroom.readBathroom(req.params);
-    return res.status(200).json(bathroomInfo);
+    const userInfo = await User.readUser(req.params);
+    return res.status(200).json(userInfo);
 })
 
 router.put('/update', async (req, res) => {
-    const updatedBathroom = await Bathroom.updateBathroom(req.params);
-    return res.status(200).json(updatedBathroom);
+    const updatedUser = await User.updateUser(req.params);
+    return res.status(200).json(updatedUser);
 })
 
 router.delete('/delete', async (req, res) => {
-    const deletedBathroom = await Bathroom.deleteBathroom(req.params);
-    return res.status(200).json({"Bathroom Entry":"Deleted"})
+    const deletedUser = await User.deleteUser(req.params);
+    return res.status(200).json({"User":"Deleted"});
 })
 
 module.exports = router;
