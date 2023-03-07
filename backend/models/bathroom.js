@@ -1,5 +1,7 @@
 class Bathroom {
     static async createBathroom(params) {
+        
+
         return {
             "name":"temp",
             "address":"temp"
