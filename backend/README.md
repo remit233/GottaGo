@@ -24,3 +24,5 @@ Quality
 Size
 Health?
 Attack?
+
+.env.template is a template for environment variables that need defining in a user-built .env file

@@ -1,3 +1,5 @@
+const db = require('../db') 
+
 class User {
     static async createUser() {
         

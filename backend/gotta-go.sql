@@ -1,5 +1,5 @@
-\echo 'Delete and create gotta-go db?'
-\prompt 'Yes?' answer
+\echo 'DELETING and creating database gotta-go'
+\prompt 'Any key for "yes", Ctrl+C for "no"' answer
 
 DROP DATABASE gotta_go;
 CREATE DATABASE gotta_go;
