@@ -1,3 +1,0 @@
-/* SeedDB.js
-storing Data
-*/

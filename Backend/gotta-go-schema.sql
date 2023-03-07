@@ -1,26 +1,6 @@
-/*
-Name
-Gender
-Account
-Password
-Email
-Profile picture
-Collection
-
-Bathroom information:
-Name of the bathroom
-Address
-Grading
-Direction/description
-
-Monsters:
-Name
-Quality
-Size
-Health?
-Attack?
+/* 
+    creates a table for users with entries requiring a first and last name
 */
-
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
     first_name TEXT NOT NULL,
