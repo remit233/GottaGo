@@ -1,3 +1,0 @@
-/* ConfigDB.js
-Configuring database with createDB.js
-*/
