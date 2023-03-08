@@ -1,5 +1,7 @@
-**Quick Start**
-***Before you begin***
+# Quick Start
+
+
+***Before you Begin***
 1. Make sure postgres is running!
 (Check for postgreSQL version: psql -V)
 2. Setup your .env file using .env.template
