@@ -9,17 +9,17 @@ router.post('/create', async(req, res) => {
 })
 
 router.get('/read', async (req, res) => {
-    const userInfo = await User.readUser(req.params);
+    const userInfo = await User.readUser(req.body);
     return res.status(200).json(userInfo);
 })
 
 router.put('/update', async (req, res) => {
-    const updatedUser = await User.updateUser(req.params);
+    const updatedUser = await User.updateUser(req.body);
     return res.status(200).json(updatedUser);
 })
 
 router.delete('/delete', async (req, res) => {
-    const deletedUser = await User.deleteUser(req.params);
+    const deletedUser = await User.deleteUser(req.body);
     return res.status(200).json({"User":"Deleted"});
 })
 
