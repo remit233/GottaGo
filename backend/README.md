@@ -1,28 +1,15 @@
-* node install
-* node app.js
+**Quick Start**
+***Before you begin***
+1. Make sure postgres is running!
+(Check for postgreSQL version: psql -V)
+2. Setup your .env file using .env.template
 
-Mark * once function completed
 
-User profile:
-Name
-Gender
-Account
-Password
-Email
-Profile picture
-Collection
+***Starting the Database***
+1. npm install
+2. psql -U postgres -f gotta-go.sql
 
-Bathroom information:
-Name of the bathroom
-Address
-Grading
-Direction/description
 
-Monsters:
-Name
-Quality
-Size
-Health?
-Attack?
-
-.env.template is a template for environment variables that need defining in a user-built .env file
+***Starting the Server***
+1. npm install
+2. node server.js
