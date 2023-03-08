@@ -9,17 +9,17 @@ router.post('/create', async(req, res) => {
 })
 
 router.get('/read', async (req, res) => {
-    const bathroomInfo = await Bathroom.readBathroom(req.params);
+    const bathroomInfo = await Bathroom.readBathroom(req.body);
     return res.status(200).json(bathroomInfo);
 })
 
 router.put('/update', async (req, res) => {
-    const updatedBathroom = await Bathroom.updateBathroom(req.params);
+    const updatedBathroom = await Bathroom.updateBathroom(req.body);
     return res.status(200).json(updatedBathroom);
 })
 
 router.delete('/delete', async (req, res) => {
-    const deletedBathroom = await Bathroom.deleteBathroom(req.params);
+    const deletedBathroom = await Bathroom.deleteBathroom(req.body);
     return res.status(200).json({"Bathroom":"Deleted"})
 })
 

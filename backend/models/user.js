@@ -1,5 +1,4 @@
-const db = require('../db'); 
-const { param } = require('../routes/user');
+const db = require('../db')
 
 class User {
     static async createUser(params) {
