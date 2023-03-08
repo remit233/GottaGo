@@ -9,8 +9,8 @@ app.use(express.json())
 app.use('/bathroom', bathroomRouter)
 app.use('/user', userRouter)
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
+app.get('/*', (req, res) => {
+  res.send('ur not supposed to be here...')
 })
 
 module.exports = app;
