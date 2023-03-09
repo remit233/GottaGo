@@ -6,8 +6,8 @@ CREATE TABLE users (
     first_name TEXT NOT NULL,
     last_name TEXT NOT NULL,
     gender TEXT,
-    password TEXT,
-    email TEXT,
+    password TEXT NOT NULL,
+    email TEXT NOT NULL,
     created_at TIMESTAMP NOT NULL DEFAULT NOW()
 );
 
@@ -23,9 +23,9 @@ CREATE TABLE bathrooms(
 CREATE TABLE monsters(
     id SERIAL PRIMARY KEY,
     name TEXT NOT NULL,
-    rarity TEXT,
+    rarity TEXT NOT NULL,
     size INT,
-    health INT,
-    attack INT,
+    health INT NOT NULL,
+    attack INT NOT NULL,
     created_at TIMESTAMP NOT NULL DEFAULT NOW()
 );
