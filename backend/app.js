@@ -9,7 +9,7 @@ app.use(express.json())
 app.use('/bathroom', bathroomRouter)
 app.use('/user', userRouter)
 
-app.get('/*', (req, res) => {
+app.get('/', async (req, res) => {
   res.send('ur not supposed to be here...')
 })
 
