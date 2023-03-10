@@ -1,4 +1,11 @@
 :root {
-    --main-primary-color: #ac9bac;
+    --primary-color-5: #743EA7;
+    --primary-color-4: #8656B3;
+    --primary-color-3: #8E6CB2;
+    --primary-color-2: #AD94C7;
+    --primary-color-1: #C2AFD5;
   }
   
+  body {
+    margin: 0px;
+  }
