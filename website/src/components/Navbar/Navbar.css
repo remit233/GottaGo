@@ -1,12 +1,9 @@
 .navbar {
-    background: linear-gradient(var(--primary-color-5), var(--primary-color-3));
-    height: 80px;
+    background: var(--primary-color-4);
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1.2rem;
-    position: sticky;
-    top: 0;
+    height: 75px;
     z-index: 999;
   }
   
@@ -18,20 +15,20 @@
     max-width: 1500px;
   }
   
-  .navbar-logo {
-    color: #fff;
-    justify-self: start;
-    margin-left: 20px;
+  .nav-logo {
+    color: var(--white);
+    text-decoration: none;
     cursor: pointer;
     text-decoration: none;
     font-size: 2rem;
-    display: flex;
-    align-items: center;
   }
   
-
+  .display-none {
+    display: none;
+  }
   
   .nav-menu {
+    font-family: 'Roboto', sans-serif;
     display: grid;
     grid-template-columns: repeat(4, auto);
     grid-gap: 100px;

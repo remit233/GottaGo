@@ -1,13 +1,15 @@
 import './Landing.css'
+import Home from '../Home/Home'
+import Download from '../Download/Download'
+import AboutUs from '../AboutUs/AboutUs'
+import Login from '../Login/Login'
 
 export default function Landing() {
     return(
         <div className="landing">
-            <h1>Find a bathroom</h1>
-            <h3>Search Nearby:</h3>
-            <form>
-              <input type="text" name="search"/>
-            </form>
+            <Home />
+            <Download />
+            <AboutUs />
         </div>
     )
 }

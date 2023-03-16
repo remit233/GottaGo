@@ -1,4 +1,8 @@
 .landing {
-    text-align: center;
     margin: 0px 100px;
+}
+
+.section {
+    min-height: 250px;
+    min-width: 100%;
 }
