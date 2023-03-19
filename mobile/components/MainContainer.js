@@ -10,8 +10,8 @@ import GameScreen from './screens/GameScreen';
 import FormHeader from './screens/FormHeader';
 //Screen names
 const homeName = "Home";
-const gameName = "Game";
 const chatName = "Chat";
+const gameName = "Game";
 const profileName = "Profile";
 
 
@@ -51,8 +51,8 @@ function MainContainer() {
         }}>
 
         <Tab.Screen name={homeName} component={HomeScreen} />
-        <Tab.Screen name={gameName} component={ChatScreen} />
-        <Tab.Screen name={chatName} component={GameScreen} />
+        <Tab.Screen name={chatName} component={ChatScreen} />
+        <Tab.Screen name={gameName} component={GameScreen} />
         <Tab.Screen name={profileName} component={FormHeader} />
 
       </Tab.Navigator>
