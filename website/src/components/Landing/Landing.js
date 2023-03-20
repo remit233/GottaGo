@@ -8,8 +8,8 @@ export default function Landing() {
     return(
         <div className="landing">
             <Home />
-            <Download />
             <AboutUs />
+            <Download />
         </div>
     )
 }
