@@ -3,7 +3,5 @@
 .app {
   box-sizing: border-box;
   background: var(--white);
-
-  font-family: 'PT Sans', sans-serif;
 }
 
