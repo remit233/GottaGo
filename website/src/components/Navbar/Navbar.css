@@ -1,56 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
 .navbar {
-    background: var(--primary-color-4);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 75px;
-    z-index: 999;
-    min-width: 100%;
-    padding-right: 30px;
-  }
-  .nav-logo {
-    color: var(--white);
-    text-decoration: none;
-    cursor: pointer;
-    text-decoration: none;
-    font-size: 2rem;
-  }
-  
-  .display-none {
-    display: none;
-  }
-  
-  .nav-links {
-    color: #fff;
-    display: flex;
-    align-items: center;
-    list-style-type: none;
-    text-decoration: none;
-  }
+  background: var(--white);
+  height: 75px;
+  padding: 10px 70px 0px 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-
-
-  .nav-menu {
-    font-family: 'Roboto', sans-serif;
-    display: grid;
-    grid-template-columns: repeat(4, auto);
-    grid-gap: 100px;
-    list-style: none;
-    text-align: center;
-    width: 60vw;
-    justify-content: end;
-    margin-right: 2rem;
-  }
-  
-  .nav-links:hover {
-    border-bottom: 4px solid #fff;
-    transition: all 0.2s ease-out;
-  }
-  
-  .fa-bars {
-    color: #fff;
-  }
-  
+}
+.nav-logo-container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+.nav-container {
+  display: flex;
+  height: 100%;
+  width: 1300px;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--light-grey);
+}
+#kawaii-toilet {
+  height: 100%;
+}
+.nav-logo {
+  font-family: 'BulgariaDreams';
+  font-weight: 700;
+  color: var(--primary-color-4);
+  text-decoration: none;
+  font-size: 48px;
+}
+#tt {
+  letter-spacing: 4px;
+  padding-left: 1px;
+}
+#exclamation {
+  padding-left: 1px;
+}
+.nav-links {
+  font-family: 'Roboto';
+  font-weight: 400;
+  height: 100%;
+  align-items: center;
+  margin:0px;
+  padding: 0px;
+  color: var(--dark-grey);
+  display: flex;
+  list-style-type: none;
+  text-decoration: none;
+}
+.nav-item {
+  box-sizing: border-box;
+  height: 50%;
+  padding: 5px 10px;
+  font-size: 16px;
+}
+.login {
+  border: 1px solid var(--dark-grey);
+  border-radius: 3px;
+  margin: 0 10px;
+}
+.sign-up {
+  border: 1px solid var(--primary-color-5);
+  border-radius: 3px;
+}
+.sign-up a {
+  color: var(--primary-color-5);
+}
+.login:hover {
+  border-color: var(--secondary-color-5);
+}
+.login a:hover {
+  color: var(--secondary-color-5);
+}
+.sign-up:hover {
+  background-color: var(--secondary-color-1);
+}
+.nav-links:hover {
+  color: var(--primary-color-5);
+}
   @media screen and (max-width: 960px) {
     .NavbarItems {
       position: relative;
@@ -132,3 +162,7 @@
       transition: 250ms;
     }
   }
+/* Helpers */
+.display-none {
+  display: none;
+}

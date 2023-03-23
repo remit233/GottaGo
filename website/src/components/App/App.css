@@ -2,9 +2,8 @@
 
 .app {
   box-sizing: border-box;
-  font-family: 'PT Sans', sans-serif;
-  min-width: 100vw;
-  min-height: 100vh;
   background: var(--white);
+
+  font-family: 'PT Sans', sans-serif;
 }
 

@@ -17,35 +17,39 @@ function Navbar() {
 
   return (
     <nav className='navbar'>
-      <Link to='/' className='nav-logo'> Gotta Go! </Link>
-
-      <ul className={renderNavLinks ? 'nav-links':'display-none'}>
-        <li className='nav-item'>
-          <Link to='/' className='nav-links' onClick={handleWindowResize}>
-            Home
-          </Link>
-        </li>
-        <li className='nav-item'>
-          <Link to='/download' className='nav-links' onClick={handleWindowResize}>
-            Download
-          </Link>
-        </li>
-        <li className='nav-item'>
-          <Link to='/aboutus' className='nav-links' onClick={handleWindowResize}>
-            About Us
-          </Link>
-        </li>
-        <li>
-          <Link to='/login' className='nav-links' onClick={handleWindowResize}>
-            Log In
-          </Link>
-        </li>
-        <li>
-          <Link to='/sign-up' className='nav-links' onClick={handleWindowResize}>
-            Sign Up
-          </Link>
-        </li>
-      </ul>
+      <div className='nav-container'>
+        <div className='nav-logo-container'>
+          <img id='kawaii-toilet' src='./kawaiitoilet.jpg'/>
+          <Link to='/' className='nav-logo'> Go<span id='tt'>tt</span>a Go<span id='exclamation'>!</span> </Link>
+        </div>
+        <ul className={renderNavLinks ? 'nav-links':'display-none'}>
+          <li className='nav-item'>
+            <Link to='/' className='nav-links' onClick={handleWindowResize}>
+              Home
+            </Link>
+          </li>
+          <li className='nav-item'>
+            <Link to='/download' className='nav-links' onClick={handleWindowResize}>
+              Download
+            </Link>
+          </li>
+          <li className='nav-item'>
+            <Link to='/aboutus' className='nav-links' onClick={handleWindowResize}>
+              About Us
+            </Link>
+          </li>
+          <li className='nav-item login'>
+            <Link to='/login' className='nav-links' onClick={handleWindowResize}>
+              Log In
+            </Link>
+          </li >
+          <li className='nav-item sign-up'>
+            <Link to='/sign-up' className='nav-links' onClick={handleWindowResize}>
+              Sign Up
+            </Link>
+          </li>
+        </ul>
+      </div>
     </nav>
   );
 }

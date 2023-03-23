@@ -1,23 +1,28 @@
 :root {
-    --primary-color-5: #743EA7;
-    --primary-color-4: #8656B3;
-    --primary-color-3: #8E6CB2;
-    --primary-color-2: #AD94C7;
-    --primary-color-1: #C2AFD5;
+  --primary-color-5: #743EA7;
+  --primary-color-4: #8656B3;
+  --primary-color-3: #8E6CB2;
+  --primary-color-2: #AD94C7;
+  --primary-color-1: #C2AFD5;
 
-    --black: #333333;
-    --dark-grey: #595959;
-    --grey: #8c8c8c;
-    --light-grey: #bfbfbf;
-    --white: #f2f2f2;
+  --black: #333333;
+  --dark-grey: #595959;
+  --grey: #8c8c8c;
+  --light-grey: #bfbfbf;
+  --white: #f2f2f2;
 
-    --secondary-color-5: #6060e4;
-    --secondary-color-4: #7979e7;
-    --secondary-color-3: #9898ef;
-    --secondary-color-2: #b9b9e9;
-    --secondary-color-1: #e7e7f9;
-  }
+  --secondary-color-5: #6060e4;
+  --secondary-color-4: #7979e7;
+  --secondary-color-3: #9898ef;
+  --secondary-color-2: #b9b9e9;
+  --secondary-color-1: #e7e7f9;
+}
   
-  body {
-    margin: 0px;
-  }
+@font-face {
+  font-family: "BulgariaDreams";
+  src: url("./fonts/BulgariaDreamsItalic-qZdWl.ttf") format("truetype");
+}
+
+body {
+  margin: 0px;
+}
