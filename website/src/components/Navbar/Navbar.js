@@ -19,8 +19,9 @@ function Navbar() {
     <nav className='navbar'>
       <div className='nav-container'>
         <div className='nav-logo-container'>
-          <img id='kawaii-toilet' src='./kawaiitoilet.jpg'/>
+          
           <Link to='/' className='nav-logo'> Go<span id='tt'>tt</span>a Go<span id='exclamation'>!</span> </Link>
+          <img id='kawaii-toilet' src='./kawaiitoilet.jpg'/>
         </div>
         <ul className={renderNavLinks ? 'nav-links':'display-none'}>
           <li className='nav-item'>

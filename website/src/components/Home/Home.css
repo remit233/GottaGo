@@ -1,9 +1,30 @@
-h1 {
-    font-weight: 700;
-}
-.text-align-center {
+.home-header1 {
     text-align: center;
+    font-weight: 300;
 }
+.home-header2 {
+    text-align: center;
+    font-weight: 300;
+}
+
+.search-bar input {
+    border: 1px solid var(--primary-color-5);
+    border-radius: 4px;
+    text-align: center;
+    margin-bottom: 20px;
+    height: 25px;
+    width: 100%;
+    background-color: var(--white);
+}
+.search-bar input::placeholder {
+    color: var(--primary-color-5);
+}
+
+.search-bar input:focus {
+    color: var(--primary-color-5);
+    outline:none;
+}
+
 iframe {
     border: none;
     width: 100%;

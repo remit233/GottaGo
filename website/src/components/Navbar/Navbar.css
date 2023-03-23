@@ -23,6 +23,7 @@
   border-bottom: 1px solid var(--light-grey);
 }
 #kawaii-toilet {
+  margin-left:15px;
   height: 100%;
 }
 .nav-logo {

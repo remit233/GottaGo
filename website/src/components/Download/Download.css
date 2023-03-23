@@ -1,7 +1,24 @@
+.download {
+    display: flex;
+    padding: 0px 50px;
+}
+
+.download-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.download-header {
+    font-weight: 300;
+    font-size: 32px;
+    text-align: center;
+}
+
 .app-images {
-    max-height: 50px;
+    height: 50px;
 }
 
 .mobile-icon {
-    height:50px;
+    height:100%;
 }
