@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+.landing {
+    box-sizing: border-box;
+    margin: 0px 100px;
+}
+
+.section {
+    box-sizing: border-box;
+    font-family: 'Roboto';
+    font-weight: 300;
+    margin-top: 30px;
+    min-height: 250px;
+    width: 100%;
+}
