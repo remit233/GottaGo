@@ -1,4 +1,5 @@
 const db = require('../db')
+const axios = require('axios');
 
 class Bathroom {
     static async createBathroom(params) {
@@ -16,12 +17,31 @@ class Bathroom {
     }
     static async readBathroom(params) {
         try{
+            //fix later
             const result = await db.query(`
             SELECT * FROM bathrooms
             WHERE id=$1`,
-            [params["id"]])
-
-            return result.rows
+            [params["id"]]
+            );
+             
+            if(result.rows.length>0){
+                //if bathroom is found in db return it
+                return result.rows
+             }
+             else{
+                //if bathroom is not found search for it in RR db
+                const refugeResult= await Bathroom.checkRefugeRestrooms(params);
+                if(refugeResult){
+                    //if bathroom is found in RR db add it to our db
+                    await Bathroom.createBathroom(refugeResult);
+                    return [refugeResult];
+                }
+                else{
+                    //if bathroom is not found return null
+                    return null;
+                }
+             }
+            
         } catch(e) {
             console.log(e)
         }
@@ -50,6 +70,22 @@ class Bathroom {
             console.log(e)
         }
     }
+   
+    //this helper function checks Refuge Restrooms db for bathroom
+    static async checkRefugeRestrooms(params){
+        const url = `https://www.refugerestrooms.org/api/v1/restrooms/search?page=1&per_page=1&unisex=true&lat=${params.lat}&lng=${params.lng}&ada=true`;
+        const response = await axios.get(url);
+
+        if (response.status === 200 && response.data.length > 0) {
+            // if a bathroom is found, return an object with the name and address
+            return { name: response.data[0].name, address: response.data[0].street };
+        } else 
+            {
+            // if a bathroom is not found, return null
+            return null;
+        }
+    }
+    
 }
 
 module.exports = Bathroom;
