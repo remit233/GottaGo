@@ -10,7 +10,7 @@ export default function Home() {
                 <input type="text" name="search" placeholder='where da bathroom at...'/>
             </form>
         
-            <iframe src="https://www.google.com/maps/embed/v1/view?key=AIzaSyDt0NalJz9Lv430qO-uLwX5mziKD28tUjE&center=40.76930565282415,-73.96456718034894&zoom=13"></iframe>
+            <iframe src="https://www.google.com/maps/embed/v1/view?key=&center=40.76930565282415,-73.96456718034894&zoom=13"></iframe>
         </div>
     )
 }
