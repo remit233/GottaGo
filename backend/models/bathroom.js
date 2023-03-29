@@ -73,7 +73,7 @@ class Bathroom {
    
     //this helper function checks Refuge Restrooms db for bathroom
     static async checkRefugeRestrooms(params){
-        const url = `https://www.refugerestrooms.org/api/v1/restrooms/search?page=1&per_page=1&unisex=true&lat=${params.lat}&lng=${params.lng}&ada=true`;
+        const url = `https://www.refugerestrooms.org/api/v1/restrooms/by_location?page=1&per_page=1&lat=${params.lat}&lng=${params.lng}`;
         const response = await axios.get(url);
 
         if (response.status === 200 && response.data.length > 0) {
