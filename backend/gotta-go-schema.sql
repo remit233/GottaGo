@@ -17,6 +17,8 @@ CREATE TABLE bathrooms(
     address TEXT NOT NULL,
     grade TEXT,
     description TEXT,
+    lat DOUBLE PRECISION,
+    lng DOUBLE PRECISION,
     created_at TIMESTAMP NOT NULL DEFAULT NOW()
 );
 
