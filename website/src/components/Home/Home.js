@@ -1,4 +1,5 @@
 import './Home.css'
+import Markers from '../Markers/Markers'
 import { GoogleMap, useLoadScript, MarkerF } from "@react-google-maps/api"
 
 export default function Home() {
@@ -18,8 +19,7 @@ export default function Home() {
             </form>
         
            <GoogleMap zoom={15} center={{lat:40.768497649503715, lng:-73.96421422429842}} mapContainerClassName="map-container">
-                <MarkerF position={{lat:40.768497649503715, lng:-73.96421422429842}}/>
-                <MarkerF position={{lat:41.768497649503715, lng:-73.96421422429842}}/>
+                <Markers/>
            </GoogleMap>
         </div>
     )

@@ -82,7 +82,7 @@
 .nav-links:hover {
   color: var(--primary-color-5);
 }
-  @media screen and (max-width: 960px) {
+  /*@media screen and (max-width: 960px) {
     .NavbarItems {
       position: relative;
     }
@@ -162,7 +162,7 @@
       color: #655DBB;
       transition: 250ms;
     }
-  }
+  }*/
 /* Helpers */
 .display-none {
   display: none;
