@@ -1,9 +1,13 @@
 const express = require('express')
-const app = express()
+const cors = require('cors')
+
 
 const bathroomRouter = require('./routes/bathroom')
 const userRouter = require('./routes/user')
 
+const app = express()
+
+app.use(cors())
 app.use(express.json())
 
 app.use('/bathroom', bathroomRouter)

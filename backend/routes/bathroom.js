@@ -25,8 +25,10 @@ router.delete('/delete', async (req, res) => {
 
 
 
-router.get('/get-nearby', async (req,res) => {
+router.post('/get-nearby', async (req,res) => {
+    console.log(req.body)
     const nearbyBathrooms = await Bathroom.getNearby(req.body);
+    console.log(nearbyBathrooms);
     return res.status(200).json(nearbyBathrooms);
 })
 module.exports = router;
