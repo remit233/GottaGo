@@ -5,10 +5,10 @@ class Bathroom {
     static async createBathroom(params) {
         try{
             const result = await db.query(`
-            INSERT INTO bathrooms (name, address)
-            VALUES ($1, $2) 
+            INSERT INTO bathrooms (name, address, lat, lng)
+            VALUES ($1, $2, $3, $4) 
             RETURNING *`,
-            [params["name"], params["address"]])
+            [params["name"], params["address"], params["lat"], params["lng"]])
 
             return result.rows
         } catch(e) {
@@ -70,15 +70,27 @@ class Bathroom {
             console.log(e)
         }
     }
-   
+    static async getNearby({lat, lng}) {
+         try {
+            const result = await db.query(`
+            SELECT * FROM BATHROOMS
+            WHERE (lat BETWEEN $1 AND $2)
+            AND (lng BETWEEN $3 AND $4)`,
+            [lat-10, lat+10, lng-10, lng+10])
+
+            return result.rows
+         } catch(e) {
+            console.log(e)
+         }
+    }
     //this helper function checks Refuge Restrooms db for bathroom
     static async checkRefugeRestrooms(params){
-        const url = `https://www.refugerestrooms.org/api/v1/restrooms/search?page=1&per_page=1&unisex=true&lat=${params.lat}&lng=${params.lng}&ada=true`;
+        const url = `https://www.refugerestrooms.org/api/v1/restrooms/by_location?page=1&per_page=1&lat=${params.lat}&lng=${params.lng}`;
         const response = await axios.get(url);
 
         if (response.status === 200 && response.data.length > 0) {
             // if a bathroom is found, return an object with the name and address
-            return { name: response.data[0].name, address: response.data[0].street };
+            return { name: response.data[0].name, address: response.data[0].street, lat:response.data[0].latitude, lng:response.data[0].longitude};
         } else 
             {
             // if a bathroom is not found, return null
