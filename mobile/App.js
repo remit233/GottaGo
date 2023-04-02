@@ -18,7 +18,6 @@ export default function App() {
       setUserLatitude((await Location.getCurrentPositionAsync()).coords.latitude)
       setUserLongitude((await Location.getCurrentPositionAsync()).coords.longitude)
       fetchBathrooms();
-      console.log(userLatitude, userLongitude)
     }
     function fetchBathrooms() {
       axios({
@@ -50,7 +49,6 @@ export default function App() {
           </Callout>
         </Marker>
         {nearbyBathrooms.map((bathroom)=> {
-          console.log("latititit", bathroom.lat);
           return(<Marker coordinate={{latitude:bathroom.lat, longitude:bathroom.lng}}>
             <Callout>
               <Text>Hewwowoo</Text>
