@@ -4,8 +4,8 @@ import MapView, { Callout, Marker } from "react-native-maps";
 import {useState, useEffect} from 'react';
 import * as Location from 'expo-location';
 import axios from 'axios'
-import MainContainer from './components/MainContainer';
-export default function App() {
+
+export default function Map() {
   const [nearbyBathrooms, setNearbyBathrooms] = useState([])
 
   const [userLatitude, setUserLatitude] = useState(40.767807649503715);
@@ -34,8 +34,32 @@ export default function App() {
   }, [])
 
   return (
-    
-    <MainContainer/>
+    <View style={styles.container}>
+      <MapView 
+        style={styles.map} 
+        initialRegion={{
+          latitude:userLatitude,
+          longitude:userLongitude,
+          latitudeDelta: 0.09,
+          longitudeDelta: 0.04
+        }}>
+        <Marker coordinate={{latitude:userLatitude, longitude:userLongitude}}>
+          <Callout>
+            <Text>U R Here :3</Text>
+          </Callout>
+        </Marker>
+        {nearbyBathrooms.map((bathroom)=> {
+          return(<Marker coordinate={{latitude:bathroom.lat, longitude:bathroom.lng}}>
+            <Callout>
+              <Text>Hewwowoo</Text>
+            </Callout>
+          </Marker>)
+        })}
+      </MapView>
+      <Text>Hewwoooo :3</Text>
+      <Text>Welcome to Bathroom Tracker</Text>
+      <StatusBar style="auto" />
+    </View>
   );
 }
 
