@@ -14,10 +14,15 @@ CREATE TABLE users (
 CREATE TABLE bathrooms(
     id SERIAL PRIMARY KEY,
     name TEXT NOT NULL,
-    address TEXT NOT NULL,
+    street TEXT NOT NULL,
+    city TEXT NOT NULL,
+    state TEXT NOT NULL,
+    longitude SERIAL NOT NULL,
+    latitude SERIAL NOT NULL,
     grade TEXT,
     description TEXT,
     created_at TIMESTAMP NOT NULL DEFAULT NOW()
+    updated_at TIMESTAMP NOT NULL DEFAULT NOW()
 );
 
 CREATE TABLE monsters(
