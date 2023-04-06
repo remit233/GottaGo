@@ -6,59 +6,78 @@ import * as Location from 'expo-location';
 import axios from 'axios'
 
 export default function Map() {
-  const [nearbyBathrooms, setNearbyBathrooms] = useState([])
-
   const [userLatitude, setUserLatitude] = useState(40.767807649503715);
   const [userLongitude, setUserLongitude] = useState(-73.96451422429842);
 
-  
+  const [nearbyBathrooms, setNearbyBathrooms] = useState([]);
+
+  const [hasNearbyBathrooms, setHasNearbyBathrooms] = useState(false);
+  const [hasUserCoords, setHasUserCoords] = useState(false);
+
+  async function requestGeoPermissions() {
+    Location.requestForegroundPermissionsAsync();
+    setUserLatitude((await Location.getCurrentPositionAsync()).coords.latitude);
+    setUserLongitude((await Location.getCurrentPositionAsync()).coords.longitude);
+    setHasUserCoords(true);
+  }
+  function fetchNearbyBathrooms() {
+    axios({
+        method:'POST',
+        url:'http://10.0.2.2:3001/bathroom/get-nearby', 
+        data: {	lat: userLatitude, lng: userLongitude}, 
+        headers:{'Content-Type': 'application/json'} })
+    .then((res) => {
+        setNearbyBathrooms(res.data);
+        setHasNearbyBathrooms(true);
+    })
+  }
+    function CreateUserMarker() {
+        return (
+            <Marker coordinate={{latitude:userLatitude, longitude:userLongitude}}>
+                <Callout>
+                    <Text>{userLatitude}, {userLongitude}</Text>
+                </Callout>
+            </Marker>
+        )
+    }
+    function CreateNearbyBathroomMarkers() {
+        return (
+            nearbyBathrooms.map((bathroom, index)=> {
+                return (
+                    <Marker coordinate={{latitude:bathroom.lat, longitude:bathroom.lng}} key={index}>
+                        <Callout>
+                            <Text>{bathroom.lat}, {bathroom.lng}</Text>
+                        </Callout>
+                    </Marker>
+                )
+            })
+        )
+    }
+
   useEffect(() => {
-    async function requestGeoPermissions() {
-      await Location.requestForegroundPermissionsAsync()
-      setUserLatitude((await Location.getCurrentPositionAsync()).coords.latitude)
-      setUserLongitude((await Location.getCurrentPositionAsync()).coords.longitude)
-      fetchBathrooms();
-    }
-    function fetchBathrooms() {
-      axios({
-          method:'POST',
-          url:'http://10.0.2.2:3001/bathroom/get-nearby', 
-          data: {	lat: userLatitude, 
-                  lng: userLongitude}, 
-          headers:{'Content-Type': 'application/json'} })
-      .then((res) => {
-          setNearbyBathrooms(res.data)
-      })
-    }
+    if(hasUserCoords) { fetchNearbyBathrooms() }
+  },[hasUserCoords])
+
+  useEffect(() => {
     requestGeoPermissions();
   }, [])
-
   return (
     <View style={styles.container}>
       <MapView 
         style={styles.map} 
-        initialRegion={{
+        region={{
           latitude:userLatitude,
           longitude:userLongitude,
-          latitudeDelta: 0.09,
-          longitudeDelta: 0.04
+          latitudeDelta: 0.01,
+          longitudeDelta: 0.01
         }}>
-        <Marker coordinate={{latitude:userLatitude, longitude:userLongitude}}>
-          <Callout>
-            <Text>U R Here :3</Text>
-          </Callout>
-        </Marker>
-        {nearbyBathrooms.map((bathroom)=> {
-          return(<Marker coordinate={{latitude:bathroom.lat, longitude:bathroom.lng}}>
-            <Callout>
-              <Text>Hewwowoo</Text>
-            </Callout>
-          </Marker>)
-        })}
-      </MapView>
-      <Text>Hewwoooo :3</Text>
-      <Text>Welcome to Bathroom Tracker</Text>
-      <StatusBar style="auto" />
+        {hasUserCoords ? <CreateUserMarker/> : null}
+        {hasNearbyBathrooms ? <CreateNearbyBathroomMarkers/> : null}
+        
+        </MapView>
+        <Text>Hewwoooo :3</Text>
+        <Text>Welcome to Bathroom Tracker</Text>
+        <StatusBar style="auto" />
     </View>
   );
 }
