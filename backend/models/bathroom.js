@@ -72,12 +72,12 @@ class Bathroom {
     }
     static async getNearby({lat, lng}) {
          try {
-            console.log([lat-1, lat+1, lng-1, lng+1])
+            console.log([lat-0.1, lat+0.1, lng-0.1, lng+0.1])
             const result = await db.query(`
             SELECT * FROM BATHROOMS
             WHERE (lat BETWEEN $1 AND $2)
             AND (lng BETWEEN $3 AND $4)`,
-            [lat-1, lat+1, lng-1, lng+1])
+            [lat-0.1, lat+0.1, lng-0.1, lng+0.1])
 
             return result.rows
          } catch(e) {
