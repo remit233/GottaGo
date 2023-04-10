@@ -1,15 +1,24 @@
 //Detail screen
 import * as React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 
 import MessageModal from './ChatScreens/MessageModal'
+import PostBox from './ChatScreens/PostBox';
 export default function ChatScreen({navigation}){
     return(
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text 
-            onPress = { () => alert('Chat SCREEN!!')}
-            style={{frontSize: 26, fontWeight: 'bold'}}>Chat</Text>
-            <MessageModal/>
+        <View style={styles.container}>
+            <View style={styles.view}> 
+                <Text>kjwfe</Text>
+            </View>
+            <PostBox/>
+            <PostBox/>
+            <PostBox/>
+            <PostBox/>
         </View>
     );
 }
+
+const styles = StyleSheet.create({
+    container: { flex:1, alignItems:'center', justifyContent:'center', backgroundColor:'#FFF3FF'},
+    view: { flex:1, backgroundColor: '#FFFFFF' }
+})
