@@ -2,13 +2,13 @@ import * as React from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
 
 
-export default function PostBox() {
+export default function PostBox({title, author}) {
     return (
         <View style={[styles.container, styles.column]}>
-            <Image style={styles.img} source={require('../../../assets/defaultuser.png')}/>
+            <Image style={styles.img} source={require('../../../assets/defaultuser2.png')}/>
             <View style={styles.row}>
-                <Text>TITLE</Text>
-                <Text>AUTHOR</Text>
+                <Text style={styles.title}>{title}</Text>
+                <Text>{author}</Text>
             </View>
         </View>
     )
@@ -16,17 +16,21 @@ export default function PostBox() {
 
 const styles = StyleSheet.create({
     container: {
-        height:70,
+        height:'auto',
+        maxHeight:100,
         width:'100%',
-        backgroundColor:'orange',
-        paddingRight:25,
-        paddingLeft:25,
-        paddingTop: 10,
-        paddingBottom:10
+        backgroundColor:'#b9b9e9',
+        paddingRight:15,
+        paddingLeft:15,
+        paddingTop: 15,
+        paddingBottom:15,
+        borderRadius:8,
+        marginBottom:3
     },
     img: {
-        width:50,
-        height:50
+        width:70,
+        height:70,
+        borderRadius:35
     },
     column: {
         flexDirection:'row',
@@ -35,5 +39,8 @@ const styles = StyleSheet.create({
     row: {
         flex:1,
         paddingLeft:25
+    },
+    title: {
+        fontSize:32
     }
 })

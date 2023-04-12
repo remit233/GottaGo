@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { Dimensions, StyleSheet, Text, View } from 'react-native';
+import { Dimensions, StyleSheet, Text, View, TextInput } from 'react-native';
 import MapView, { Callout, Marker } from "react-native-maps";
 import {useState, useEffect} from 'react';
 import * as Location from 'expo-location';
@@ -75,7 +75,8 @@ export default function Map() {
         {hasNearbyBathrooms ? <CreateNearbyBathroomMarkers/> : null}
         
         </MapView>
-        
+        <Text style={styles.text}>Search for a Location:</Text>
+        <TextInput style={styles.input}/>
         <StatusBar style="auto" />
     </View>
   );
@@ -92,5 +93,14 @@ const styles = StyleSheet.create({
     position:'absolute',
     width: Dimensions.get("window").width,
     height: Dimensions.get("window").height
+  },
+  text: {
+  },
+  input: {
+    borderWidth:1,
+    borderColor:'black',
+    backgroundColor:'white',
+    width:200,
+    padding:8
   }
 });
