@@ -75,8 +75,7 @@ export default function Map() {
         {hasNearbyBathrooms ? <CreateNearbyBathroomMarkers/> : null}
         
         </MapView>
-        <Text>Hewwoooo :3</Text>
-        <Text>Welcome to Bathroom Tracker</Text>
+        
         <StatusBar style="auto" />
     </View>
   );

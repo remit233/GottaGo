@@ -7,7 +7,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import HomeScreen from './screens/HomeScreen';
 import ChatScreen from './screens/ChatScreen';
 import GameScreen from './screens/GameScreen';
-import FormHeader from './screens/FormHeader';
+import ProfileScreen from './screens/ProfileScreen';
 //Screen names
 const homeName = "Home";
 const chatName = "Chat";
@@ -44,7 +44,7 @@ function MainContainer() {
           },
         })}
         tabBarOptions={{
-          activeTintColor: 'tomato',
+          activeTintColor: '#743EA7',
           inactiveTintColor: 'grey',
           labelStyle: { paddingBottom: 10, fontSize: 10 },
           style: { padding: 10, height: 70}
@@ -53,7 +53,7 @@ function MainContainer() {
         <Tab.Screen name={homeName} component={HomeScreen} />
         <Tab.Screen name={gameName} component={GameScreen} />
         <Tab.Screen name={chatName} component={ChatScreen} />
-        <Tab.Screen name={profileName} component={FormHeader} />
+        <Tab.Screen name={profileName} component={ProfileScreen} />
 
       </Tab.Navigator>
     </NavigationContainer>
