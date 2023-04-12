@@ -7,18 +7,25 @@ import PostBox from './ChatScreens/PostBox';
 export default function ChatScreen({navigation}){
     return(
         <View style={styles.container}>
-            <View style={styles.view}> 
-                <Text>kjwfe</Text>
+            <View style={styles.wrapper}>
+                <PostBox title={'Is the bathroom at so and so clean'} author={'Ana P'}/>
+                <PostBox title={'Make font size smaller as text exceeds max heigght'} author={'Steven :3'}/>
             </View>
-            <PostBox/>
-            <PostBox/>
-            <PostBox/>
-            <PostBox/>
         </View>
     );
 }
 
 const styles = StyleSheet.create({
-    container: { flex:1, alignItems:'center', justifyContent:'center', backgroundColor:'#FFF3FF'},
-    view: { flex:1, backgroundColor: '#FFFFFF' }
+    container: { 
+        flex:1,
+        justifyContent:'center',
+        alignItems: 'center',
+        backgroundColor:'#f2f2f2'
+    },
+    wrapper: {
+        height:'96%',
+        width:'94%',
+        justifyContent:'flex-start',
+        alignItems:'center'
+    }
 })
