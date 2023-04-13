@@ -17,7 +17,7 @@ const profileName = "Profile";
 
 const Tab = createBottomTabNavigator();
 
-function MainContainer() {
+export default function MainContainer() {
   return (
     <NavigationContainer>
       <Tab.Navigator
@@ -42,21 +42,20 @@ function MainContainer() {
             // You can return any component that you like here!
             return <Ionicons name={iconName} size={size} color={color} />;
           },
-            "tabBarActiveTintColor": "tomato",
-            "tabBarInactiveTintColor": "grey",
-            "tabBarLabelStyle": {
-              "paddingBottom": 10,
-              "fontSize": 10
-            },
-            "tabBarStyle": [
-              {
-                "display": "flex"
-              },
-              null
-            ]
-          
+          "tabBarActiveTintColor": "#743EA7",
+          "tabBarInactiveTintColor": "black",
+          "tabBarLabelStyle": {
+            "fontSize": 10,
+            "paddingBottom": 10
+          },
+          "tabBarStyle": {
+            "display":"flex",
+            "height":60,
+            "paddingTop":8
+          },
+          headerTitleAlign:'center'
         })}
-       >
+      >
 
         <Tab.Screen name={homeName} component={HomeScreen} />
         <Tab.Screen name={gameName} component={GameScreen} />
@@ -67,5 +66,3 @@ function MainContainer() {
     </NavigationContainer>
   );
 }
-
-export default MainContainer;
