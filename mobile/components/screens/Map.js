@@ -1,11 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
-import { Dimensions, StyleSheet, Text, View, TextInput } from 'react-native';
+import { Dimensions, StyleSheet, Text, View, TextInput, Pressable } from 'react-native';
 import MapView, { Callout, Marker } from "react-native-maps";
 import {useState, useEffect} from 'react';
 import * as Location from 'expo-location';
 import axios from 'axios'
 
-export default function Map() {
+export default function Map({ setMarker }) {
   const [userLatitude, setUserLatitude] = useState(40.767807649503715);
   const [userLongitude, setUserLongitude] = useState(-73.96451422429842);
 
@@ -33,22 +33,22 @@ export default function Map() {
   }
     function CreateUserMarker() {
         return (
-            <Marker coordinate={{latitude:userLatitude, longitude:userLongitude}}>
-                <Callout>
-                    <Text>{userLatitude}, {userLongitude}</Text>
-                </Callout>
-            </Marker>
+          <Marker coordinate={{latitude:userLatitude, longitude:userLongitude}} onPress={setMarker(true)}>
+              <Callout>
+                  <Text>{userLatitude}, {userLongitude}</Text>
+              </Callout>
+          </Marker>
         )
     }
     function CreateNearbyBathroomMarkers() {
         return (
             nearbyBathrooms.map((bathroom, index)=> {
                 return (
-                    <Marker coordinate={{latitude:bathroom.lat, longitude:bathroom.lng}} key={index}>
-                        <Callout>
-                            <Text>{bathroom.lat}, {bathroom.lng}</Text>
-                        </Callout>
-                    </Marker>
+                  <Marker coordinate={{latitude:bathroom.lat, longitude:bathroom.lng}} key={index}>
+                      <Callout>
+                          <Text>{bathroom.lat}, {bathroom.lng}</Text>
+                      </Callout>
+                  </Marker>
                 )
             })
         )
