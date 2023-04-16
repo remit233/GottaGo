@@ -5,7 +5,7 @@ import {useState, useEffect} from 'react';
 import * as Location from 'expo-location';
 import axios from 'axios'
 
-export default function Map({ setMarker }) {
+export default function Map({ setMarkerFocus, setMarker }) {
   const [userLatitude, setUserLatitude] = useState(40.767807649503715);
   const [userLongitude, setUserLongitude] = useState(-73.96451422429842);
 
@@ -33,7 +33,7 @@ export default function Map({ setMarker }) {
   }
     function CreateUserMarker() {
         return (
-          <Marker coordinate={{latitude:userLatitude, longitude:userLongitude}} onPress={setMarker(true)}>
+          <Marker coordinate={{latitude:userLatitude, longitude:userLongitude}} onPress={() => {setMarkerFocus(true); setMarker({title:'You', author:':3'})}}>
               <Callout>
                   <Text>{userLatitude}, {userLongitude}</Text>
               </Callout>
@@ -44,7 +44,7 @@ export default function Map({ setMarker }) {
         return (
             nearbyBathrooms.map((bathroom, index)=> {
                 return (
-                  <Marker coordinate={{latitude:bathroom.lat, longitude:bathroom.lng}} key={index}>
+                  <Marker coordinate={{latitude:bathroom.lat, longitude:bathroom.lng}} key={index} onPress={() => {setMarkerFocus(true); setMarker({title:bathroom.name, author:bathroom.address})}}>
                       <Callout>
                           <Text>{bathroom.lat}, {bathroom.lng}</Text>
                       </Callout>
@@ -75,8 +75,10 @@ export default function Map({ setMarker }) {
         {hasNearbyBathrooms ? <CreateNearbyBathroomMarkers/> : null}
         
         </MapView>
-        <Text style={styles.text}>Search for a Location:</Text>
-        <TextInput style={styles.input}/>
+        <View style={styles.searchBar}>
+          <Text style={styles.text}>Search for a Location:</Text>
+          <TextInput style={styles.input}/>
+        </View>
         <StatusBar style="auto" />
     </View>
   );
@@ -95,6 +97,7 @@ const styles = StyleSheet.create({
     height: Dimensions.get("window").height
   },
   text: {
+    backgroundColor:'white'
   },
   input: {
     borderWidth:1,
@@ -102,5 +105,8 @@ const styles = StyleSheet.create({
     backgroundColor:'white',
     width:200,
     padding:8
+  },
+  searchBar: {
+    flex:1
   }
 });
