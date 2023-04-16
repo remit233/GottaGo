@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     },
     wrapper: {
         height:'96%',
-        width:'94%',
+        width:'98%',
         justifyContent:'flex-start',
         alignItems:'center'
     }
