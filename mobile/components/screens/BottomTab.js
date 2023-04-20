@@ -1,6 +1,9 @@
 import { StyleSheet, Text, View } from "react-native"
 import { Gesture, GestureDetector } from "react-native-gesture-handler"
 import Animated, { useAnimatedStyle, useSharedValue } from "react-native-reanimated"
+import PostBox from './ChatScreens/PostBox'
+import InfoBox from "./InfoBox"
+
 export default function BottomTab() {
     const translateY = useSharedValue(0)
     const context = useSharedValue({y:0})
@@ -17,7 +20,8 @@ export default function BottomTab() {
     return (
         <GestureDetector gesture={gesture}>
             <Animated.View style={[styles.container, bottomSheetStyle]}>
-                <Text>fewfw</Text>
+                <PostBox title={'ff'} author={'fwef'}/>
+                <InfoBox/>
             </Animated.View>
         </GestureDetector>
     )
@@ -25,10 +29,13 @@ export default function BottomTab() {
 
 const styles= StyleSheet.create({
     container:{
-        height:'50%',
         width:'100%',
         top:'50%',
         position:'absolute',
-        backgroundColor:'white'
+        backgroundColor:'white',
+        borderColor:'black',
+        borderWidth:0.5,
+        paddingTop:10,
+        borderRadius:8
     }
 })
