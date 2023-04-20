@@ -1,8 +1,15 @@
 //Home screen
 import * as React from 'react';
-import { View, ScrollView, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
+import Animated from 'react-native-reanimated';
+import {GestureDetector} from 'react-native-gesture-handler'
+
 import Map from './Map';
 import PostBox from './ChatScreens/PostBox';
+import BottomTab from './BottomTab';
+
+
+
 export default function HomeScreen({navigation}){
     const [userLongitude, setUserLongitude] = React.useState();
     const [userLatitude, setUserLatitude] = React.useState();
@@ -10,27 +17,25 @@ export default function HomeScreen({navigation}){
     const [markerFocus, setMarkerFocus] = React.useState(false);
     const [marker, setMarker] = React.useState({title:'null', author:'null'});
 
-    const [scrollContainerHeight, setScrollContainerHeight] = React.useState(100)
 
-    const styles = StyleSheet.create({
-        scrollContainer: {
-            position:'absolute',
-            flex:1,
-            width:'100%',
-            height: scrollContainerHeight,
-            bottom:0
-        }
-    })
 
     return(
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
             <Map setMarkerFocus={setMarkerFocus} setMarker={setMarker}/>
-            <View style={styles.scrollContainer}>
-                <ScrollView onScroll={(e) => {setScrollContainerHeight(scrollContainerHeight+10)}}>
-                    {markerFocus ? <PostBox title={marker.title} author={marker.author}/>:null}
-                    <PostBox/>
-                </ScrollView>
-            </View>
+            {markerFocus?<PostBox title={marker.title} author={marker.author} imag='defaultBathroom'/>:null}
+            {markerFocus?<PostBox title={'bathroom1'} author={''} imag='defaultBathroom'/>:null}
+            <BottomTab/>
         </View>
     );
 }
+
+const styles = StyleSheet.create({
+    bottomSheetContainer: {
+        position:'absolute',
+        height:'100%',
+        width:'100%',
+        backgroundColor:'white',
+        top:100,
+        borderRadius:15
+    }
+})

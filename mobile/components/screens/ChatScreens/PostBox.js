@@ -2,10 +2,13 @@ import * as React from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
 
 
-export default function PostBox({title, author}) {
+export default function PostBox({title, author, imag='defaultUser'}) {
+    const profiles = { 
+        defaultUser:require('../../../assets/defaultuser2.png'),
+        defaultBathroom:require('../../../assets/bathroomdefault.jpg')}
     return (
         <View style={[styles.container, styles.column]}>
-            <Image style={styles.img} source={require('../../../assets/defaultuser2.png')}/>
+            <Image style={styles.img} source={profiles[imag]}/>
             <View style={styles.row}>
                 <Text style={styles.title}>{title}</Text>
                 <Text>{author}</Text>

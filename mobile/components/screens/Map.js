@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { Dimensions, StyleSheet, Text, View, TextInput, Pressable } from 'react-native';
+import { Dimensions, StyleSheet, Text, View, TextInput } from 'react-native';
 import MapView, { Callout, Marker } from "react-native-maps";
 import {useState, useEffect} from 'react';
 import * as Location from 'expo-location';
@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
     backgroundColor:'white'
   },
   input: {
-    borderWidth:1,
+    borderWidth:0.5,
     borderColor:'black',
     backgroundColor:'white',
     width:200,
