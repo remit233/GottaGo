@@ -11,11 +11,11 @@ export default function BottomTab() {
     .onStart((e) => {
         context.value = {y:translateY.value}
     }).onUpdate((e) => {
-        translateY.value=e.translationY + context.value.y
+        translateY.value=(e.translationY + context.value.y)
     })
 
     const bottomSheetStyle = useAnimatedStyle(() => {
-        return { transform: [{translateY:translateY.value}]}
+        return { transform: [{translateY:(translateY.value > 77.2602767944336? translateY.value:77.2602767944336)}]}
     })
     return (
         <GestureDetector gesture={gesture}>
