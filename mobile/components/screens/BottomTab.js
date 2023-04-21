@@ -1,38 +1,11 @@
+
 import { StyleSheet, Text, View } from "react-native"
 import { Gesture, GestureDetector } from "react-native-gesture-handler"
 import Animated, { useAnimatedStyle, useSharedValue } from "react-native-reanimated"
 import PostBox from './ChatScreens/PostBox'
 import InfoBox from "./InfoBox"
 
-export default function BottomTab() {
-    const translateY = useSharedValue(0)
-    const context = useSharedValue({y:0})
-    const gesture = Gesture.Pan()
-    .onStart((e) => {
-        context.value = {y:translateY.value}
-    }).onUpdate((e) => {
-        translateY.value=e.translationY + context.value.y
-    })
-
-    const bottomSheetStyle = useAnimatedStyle(() => {
-        return { transform: [{translateY:translateY.value}]}
-    })
-    return (
-        <GestureDetector gesture={gesture}>
-            <Animated.View style={[styles.container, bottomSheetStyle]}>
-                <PostBox title={'ff'} author={'fwef'}/>
-                <InfoBox/>
-            </Animated.View>
-        </GestureDetector>
-    )
-}
-import { StyleSheet, Text, View } from "react-native"
-import { Gesture, GestureDetector } from "react-native-gesture-handler"
-import Animated, { useAnimatedStyle, useSharedValue } from "react-native-reanimated"
-import PostBox from './ChatScreens/PostBox'
-import InfoBox from "./InfoBox"
-
-export default function BottomTab() {
+export default function BottomTab({title, author, type}) {
     const translateY = useSharedValue(0)
     const context = useSharedValue({y:0})
     const gesture = Gesture.Pan()
@@ -48,7 +21,7 @@ export default function BottomTab() {
     return (
         <GestureDetector gesture={gesture}>
             <Animated.View style={[styles.container, bottomSheetStyle]}>
-                <PostBox title={'ff'} author={'fwef'}/>
+                <PostBox title={title} author={author} imag={type}/>
                 <InfoBox/>
             </Animated.View>
         </GestureDetector>

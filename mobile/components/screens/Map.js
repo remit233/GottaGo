@@ -76,8 +76,7 @@ export default function Map({ setMarkerFocus, setMarker }) {
         
         </MapView>
         <View style={styles.searchBar}>
-          <Text style={styles.text}>Search for a Location:</Text>
-          <TextInput style={styles.input}/>
+          <TextInput style={styles.input} placeholder='Search nearby...'/>
         </View>
         <StatusBar style="auto" />
     </View>
@@ -87,7 +86,6 @@ export default function Map({ setMarkerFocus, setMarker }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
   }, 
@@ -103,10 +101,16 @@ const styles = StyleSheet.create({
     borderWidth:0.5,
     borderColor:'black',
     backgroundColor:'white',
-    width:200,
+    borderRadius:24,
+    width:'50%',
     padding:8
   },
   searchBar: {
-    flex:1
+    position:'absolute',
+    alignItems:'center',
+    top:0,
+    width:'100%',
+    height:50,
+    backgroundColor:'white'
   }
 });

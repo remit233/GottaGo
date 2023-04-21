@@ -22,9 +22,7 @@ export default function HomeScreen({navigation}){
     return(
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
             <Map setMarkerFocus={setMarkerFocus} setMarker={setMarker}/>
-            {markerFocus?<PostBox title={marker.title} author={marker.author} imag='defaultBathroom'/>:null}
-            {markerFocus?<PostBox title={'bathroom1'} author={''} imag='defaultBathroom'/>:null}
-            <BottomTab/>
+            {markerFocus?<BottomTab title={marker.title} author={marker.author} type='defaultBathroom'/>:null}
         </View>
     );
 }

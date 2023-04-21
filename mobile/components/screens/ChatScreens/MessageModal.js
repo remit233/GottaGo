@@ -1,25 +1,4 @@
-import * as React from 'react'
-import { StyleSheet, Modal, View, Text, Button } from 'react-native';
-import {useState, useEffect} from 'react';
-export default function MessageModal() {
-    const [visible, setVisible] = useState(false);
 
-    return (
-        <View style={styles.container}>
-            <Button title='SHOWMODAL' onPress={() => {setVisible(true)}}/>
-            <Modal animationType='slide' visible={visible}>
-                <View style={styles.modalContainer}>
-                    <View style={styles.view}>
-                        <Text style={styles.text}>Log In or Sign Up</Text>
-                        <View style={styles.center}>
-                            <Button style = {styles.button} title='BACK' onPress={() => {setVisible(false)}}/>
-                        </View>
-                    </View>
-                </View>
-            </Modal>
-        </View>
-    );
-}
 import * as React from 'react'
 import { StyleSheet, Modal, View, Text } from 'react-native';
 
