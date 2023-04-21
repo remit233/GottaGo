@@ -1,20 +1,20 @@
+
 import * as React from 'react'
-import { StyleSheet, Modal, View, Text, Button } from 'react-native';
-import {useState, useEffect} from 'react';
+import { StyleSheet, Modal, View, Text } from 'react-native';
+
 export default function MessageModal() {
     const [visible, setVisible] = useState(false);
 
     return (
         <View style={styles.container}>
-            <Button title='ff' onPress={() => {setVisible(true)}}/>
-            <Modal 
-                animationType='slide'
-                visible={visible}
-                >
-                <View style={styles.view}>
-                    <Text style={styles.text}>Log In or Sign Up</Text>
-                    <View style={styles.center}>
-                        <Button style = {styles.button} title='jewfle' onPress={() => {setVisible(false)}}/>
+            <Button title='SHOWMODAL' onPress={() => {setVisible(true)}}/>
+            <Modal animationType='slide' visible={visible}>
+                <View style={styles.modalContainer}>
+                    <View style={styles.view}>
+                        <Text style={styles.text}>Log In or Sign Up</Text>
+                        <View style={styles.center}>
+                            <Button style = {styles.button} title='BACK' onPress={() => {setVisible(false)}}/>
+                        </View>
                     </View>
                 </View>
             </Modal>
@@ -23,9 +23,15 @@ export default function MessageModal() {
 }
 
 const styles = StyleSheet.create({
+    modalContainer:{
+        flex:1,
+        justifyContent:'center',
+        alignItems:'center'
+    },
     container: {
-        flex: 1,
-        backgroundColor: '#FFF3FF',
+        width:'50%',
+        height:'50%',
+        backgroundColor: '#FFFFFF',
     },
     center: {
         backgroundColor: '#FFFFFF',
@@ -34,17 +40,18 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     view: {
-        backgroundColor: '#FFF3FF',
-        margin: 20,
-        flex:1,
-        alignItems: 'center',
-        justifyContent: 'center'
+        width:'100%',
+        height:'30%',
+        justifyContent:'center',
+        alignItems:'center'
     },
     button: {
+        flex:1
     },
     text: {
         backgroundColor: '#FFFFFF',
         flex: 1,
-        textAlign: 'center'
+        textAlign: 'center',
+        fontSize:32
     }
 });

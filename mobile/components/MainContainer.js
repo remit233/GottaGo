@@ -7,7 +7,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import HomeScreen from './screens/HomeScreen';
 import ChatScreen from './screens/ChatScreen';
 import GameScreen from './screens/GameScreen';
-import FormHeader from './screens/FormHeader';
+import ProfileScreen from './screens/ProfileScreen';
 //Screen names
 const homeName = "Home";
 const chatName = "Chat";
@@ -17,7 +17,7 @@ const profileName = "Profile";
 
 const Tab = createBottomTabNavigator();
 
-function MainContainer() {
+export default function MainContainer() {
   return (
     <NavigationContainer>
       <Tab.Navigator
@@ -42,30 +42,27 @@ function MainContainer() {
             // You can return any component that you like here!
             return <Ionicons name={iconName} size={size} color={color} />;
           },
-            "tabBarActiveTintColor": "tomato",
-            "tabBarInactiveTintColor": "grey",
-            "tabBarLabelStyle": {
-              "paddingBottom": 10,
-              "fontSize": 10
-            },
-            "tabBarStyle": [
-              {
-                "display": "flex"
-              },
-              null
-            ]
-          
+          "tabBarActiveTintColor": "#743EA7",
+          "tabBarInactiveTintColor": "black",
+          "tabBarLabelStyle": {
+            "fontSize": 10,
+            "paddingBottom": 10
+          },
+          "tabBarStyle": {
+            "display":"flex",
+            "height":60,
+            "paddingTop":8
+          },
+          headerTitleAlign:'center'
         })}
-       >
+      >
 
         <Tab.Screen name={homeName} component={HomeScreen} />
         <Tab.Screen name={gameName} component={GameScreen} />
         <Tab.Screen name={chatName} component={ChatScreen} />
-        <Tab.Screen name={profileName} component={FormHeader} />
+        <Tab.Screen name={profileName} component={ProfileScreen} />
 
       </Tab.Navigator>
     </NavigationContainer>
   );
 }
-
-export default MainContainer;

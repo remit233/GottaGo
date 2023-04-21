@@ -5,7 +5,7 @@ import {useState, useEffect} from 'react';
 import * as Location from 'expo-location';
 import axios from 'axios'
 
-export default function Map() {
+export default function Map({ setMarkerFocus, setMarker }) {
   const [userLatitude, setUserLatitude] = useState(40.767807649503715);
   const [userLongitude, setUserLongitude] = useState(-73.96451422429842);
 
@@ -33,22 +33,22 @@ export default function Map() {
   }
     function CreateUserMarker() {
         return (
-            <Marker coordinate={{latitude:userLatitude, longitude:userLongitude}}>
-                <Callout>
-                    <Text>{userLatitude}, {userLongitude}</Text>
-                </Callout>
-            </Marker>
+          <Marker coordinate={{latitude:userLatitude, longitude:userLongitude}} onPress={() => {setMarkerFocus(true); setMarker({title:'You', author:':3'})}}>
+              <Callout>
+                  <Text>{userLatitude}, {userLongitude}</Text>
+              </Callout>
+          </Marker>
         )
     }
     function CreateNearbyBathroomMarkers() {
         return (
             nearbyBathrooms.map((bathroom, index)=> {
                 return (
-                    <Marker coordinate={{latitude:bathroom.lat, longitude:bathroom.lng}} key={index}>
-                        <Callout>
-                            <Text>{bathroom.lat}, {bathroom.lng}</Text>
-                        </Callout>
-                    </Marker>
+                  <Marker coordinate={{latitude:bathroom.lat, longitude:bathroom.lng}} key={index} onPress={() => {setMarkerFocus(true); setMarker({title:bathroom.name, author:bathroom.address})}}>
+                      <Callout>
+                          <Text>{bathroom.lat}, {bathroom.lng}</Text>
+                      </Callout>
+                  </Marker>
                 )
             })
         )
@@ -75,8 +75,9 @@ export default function Map() {
         {hasNearbyBathrooms ? <CreateNearbyBathroomMarkers/> : null}
         
         </MapView>
-        <Text style={styles.text}>Search for a Location:</Text>
-        <TextInput style={styles.input}/>
+        <View style={styles.searchBar}>
+          <TextInput style={styles.input} placeholder='Search nearby...'/>
+        </View>
         <StatusBar style="auto" />
     </View>
   );
@@ -85,7 +86,6 @@ export default function Map() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
   }, 
@@ -95,12 +95,22 @@ const styles = StyleSheet.create({
     height: Dimensions.get("window").height
   },
   text: {
+    backgroundColor:'white'
   },
   input: {
-    borderWidth:1,
+    borderWidth:0.5,
     borderColor:'black',
     backgroundColor:'white',
-    width:200,
+    borderRadius:24,
+    width:'50%',
     padding:8
+  },
+  searchBar: {
+    position:'absolute',
+    alignItems:'center',
+    top:0,
+    width:'100%',
+    height:50,
+    backgroundColor:'white'
   }
 });
