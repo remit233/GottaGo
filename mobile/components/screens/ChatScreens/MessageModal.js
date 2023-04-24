@@ -1,7 +1,7 @@
 
 import * as React from 'react'
-import { StyleSheet, Modal, View, Text } from 'react-native';
-
+import { StyleSheet, Modal, View, Text, Button } from 'react-native';
+import {useState} from 'react'
 export default function MessageModal() {
     const [visible, setVisible] = useState(false);
 
