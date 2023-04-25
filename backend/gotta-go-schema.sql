@@ -34,3 +34,12 @@ CREATE TABLE monsters(
     attack INT NOT NULL,
     created_at TIMESTAMP NOT NULL DEFAULT NOW()
 );
+
+CREATE TABLE messages (
+  message_id SERIAL PRIMARY KEY,
+  sender_id INTEGER NOT NULL REFERENCES users(user_id) ON DELETE CASCADE,
+  receiver_id INTEGER NOT NULL REFERENCES users(user_id) ON DELETE CASCADE,
+  content TEXT NOT NULL,
+  timestamp TIMESTAMP NOT NULL,
+  is_read BOOLEAN NOT NULL DEFAULT FALSE
+);
