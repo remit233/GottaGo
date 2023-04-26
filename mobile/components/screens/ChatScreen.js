@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TextInput, TouchableOpacity, KeyboardAvoidingView, Keyboard, Platform } from 'react-native';
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, KeyboardAvoidingView, Keyboard, Platform, ScrollView } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import MessageModal from './ChatScreens/MessageModal';
 import PostBox from './ChatScreens/PostBox';
@@ -17,8 +17,9 @@ export default function ChatScreen({ navigation }) {
   };
 
   return (
+    
     <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : null} style={styles.container} keyboardVerticalOffset={Platform.OS === 'ios' ? 90 : 0}>
-
+    
       <View style={styles.wrapper}>
         <View style={styles.header}>
           <TouchableOpacity onPress={() => navigation.goBack()}>
@@ -26,11 +27,13 @@ export default function ChatScreen({ navigation }) {
           </TouchableOpacity>
           <Text style={styles.text}>Current Bathroom</Text>
         </View>
+        <ScrollView>
         <View style={styles.chatContainer}>
           {messages.map((msg, index) => (
             <PostBox key={index} title={msg.text} author={msg.author} />
           ))}
         </View>
+        </ScrollView>
         <View style={styles.inputContainer}>
           <TextInput
             style={styles.input}
@@ -44,9 +47,11 @@ export default function ChatScreen({ navigation }) {
             <Ionicons name="send-outline" size={24} color="black" />
           </TouchableOpacity>
         </View>
+        
       </View>
       
     </KeyboardAvoidingView>
+   
   );
 }
 
