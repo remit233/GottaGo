@@ -60,7 +60,7 @@ export default function MainContainer() {
         <Tab.Screen name={homeName} component={HomeScreen} />
         <Tab.Screen name={gameName} component={GameScreen} />
         <Tab.Screen name={chatName} component={ChatScreen} />
-        <Tab.Screen name={profileName} component={ProfileScreen} />
+        <Tab.Screen name={profileName} component={ProfileScreen}/>
 
       </Tab.Navigator>
     </NavigationContainer>

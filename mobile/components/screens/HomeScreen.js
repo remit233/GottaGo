@@ -7,7 +7,7 @@ import {GestureDetector} from 'react-native-gesture-handler'
 import Map from './Map';
 import PostBox from './ChatScreens/PostBox';
 import BottomTab from './BottomTab';
-
+import { BathroomContext } from './context';
 
 
 export default function HomeScreen({navigation}){
@@ -17,8 +17,11 @@ export default function HomeScreen({navigation}){
     const [markerFocus, setMarkerFocus] = React.useState(false);
     const [marker, setMarker] = React.useState({title:'null', author:'null'});
 
+    const {bathroom, setBathroom} = React.useContext(BathroomContext);
 
-
+    React.useEffect(() => {
+        setBathroom(marker)
+    },[marker])
     return(
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
             <Map setMarkerFocus={setMarkerFocus} setMarker={setMarker}/>
