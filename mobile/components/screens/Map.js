@@ -23,7 +23,7 @@ export default function Map({ setMarkerFocus, setMarker }) {
   function fetchNearbyBathrooms() {
     axios({
         method:'POST',
-        url:'http://10.0.2.2:3001/bathroom/get-nearby', 
+        url:'https://loose-temper-production.up.railway.app/bathroom/get-nearby', 
         data: {	lat: userLatitude, lng: userLongitude}, 
         headers:{'Content-Type': 'application/json'} })
     .then((res) => {
