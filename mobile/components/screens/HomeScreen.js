@@ -1,8 +1,6 @@
 //Home screen
 import * as React from 'react';
 import { View, StyleSheet } from 'react-native';
-import Animated from 'react-native-reanimated';
-import {GestureDetector} from 'react-native-gesture-handler'
 
 import Map from './Map';
 import PostBox from './ChatScreens/PostBox';

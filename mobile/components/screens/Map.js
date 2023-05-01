@@ -4,6 +4,7 @@ import MapView, { Callout, Marker } from "react-native-maps";
 import {useState, useEffect} from 'react';
 import * as Location from 'expo-location';
 import axios from 'axios'
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 export default function Map({ setMarkerFocus, setMarker }) {
   const [userLatitude, setUserLatitude] = useState(40.767807649503715);
@@ -23,7 +24,7 @@ export default function Map({ setMarkerFocus, setMarker }) {
   function fetchNearbyBathrooms() {
     axios({
         method:'POST',
-        url:'http://10.0.2.2:3001/bathroom/get-nearby', 
+        url:'https://loose-temper-production.up.railway.app/bathroom/get-nearby', 
         data: {	lat: userLatitude, lng: userLongitude}, 
         headers:{'Content-Type': 'application/json'} })
     .then((res) => {
@@ -77,6 +78,7 @@ export default function Map({ setMarkerFocus, setMarker }) {
         </MapView>
         <View style={styles.searchBar}>
           <TextInput style={styles.input} placeholder='Search nearby...'/>
+          <Ionicons name='filter-outline' size={28} color='black'/>
         </View>
         <StatusBar style="auto" />
     </View>
@@ -98,16 +100,19 @@ const styles = StyleSheet.create({
     backgroundColor:'white'
   },
   input: {
-    borderWidth:0.5,
+    borderWidth:1,
     borderColor:'black',
     backgroundColor:'white',
     borderRadius:24,
     width:'50%',
-    padding:8
+    padding:8,
+    marginRight:10
   },
   searchBar: {
     position:'absolute',
+    justifyContent:'center',
     alignItems:'center',
+    flexDirection:'row',
     top:0,
     width:'100%',
     height:50,
