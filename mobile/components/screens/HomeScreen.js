@@ -6,6 +6,7 @@ import Map from './Map';
 import PostBox from './ChatScreens/PostBox';
 import BottomTab from './BottomTab';
 import { BathroomContext } from './context';
+import FilterScreen from './FilterScreen';
 
 
 export default function HomeScreen({navigation}){

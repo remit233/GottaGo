@@ -5,6 +5,7 @@ import {useState, useEffect} from 'react';
 import * as Location from 'expo-location';
 import axios from 'axios'
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import FilterScreen from './FilterScreen';
 
 export default function Map({ setMarkerFocus, setMarker }) {
   const [userLatitude, setUserLatitude] = useState(40.767807649503715);
@@ -14,6 +15,8 @@ export default function Map({ setMarkerFocus, setMarker }) {
 
   const [hasNearbyBathrooms, setHasNearbyBathrooms] = useState(false);
   const [hasUserCoords, setHasUserCoords] = useState(false);
+
+  const [modalVisibility, setModalVisibility] = useState(false);
 
   async function requestGeoPermissions() {
     Location.requestForegroundPermissionsAsync();
@@ -78,8 +81,10 @@ export default function Map({ setMarkerFocus, setMarker }) {
         </MapView>
         <View style={styles.searchBar}>
           <TextInput style={styles.input} placeholder='Search nearby...'/>
-          <Ionicons name='filter-outline' size={28} color='black'/>
+          <Ionicons name='filter-outline' size={28} color='black' onPress={() => {setModalVisibility(true)}}/>
         </View>
+
+        <FilterScreen visible={modalVisibility} setVisible={setModalVisibility}/>
         <StatusBar style="auto" />
     </View>
   );
