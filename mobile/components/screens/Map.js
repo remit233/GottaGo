@@ -6,6 +6,7 @@ import * as Location from 'expo-location';
 import axios from 'axios'
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import FilterScreen from './FilterScreen';
+import {GooglePlacesAutocomplete} from 'react-native-google-places-autocomplete';
 
 export default function Map({ setMarkerFocus, setMarker }) {
   const [userLatitude, setUserLatitude] = useState(40.767807649503715);
@@ -94,8 +95,22 @@ export default function Map({ setMarkerFocus, setMarker }) {
         
         </MapView>
         <View style={styles.searchBar}>
-          <TextInput style={styles.input} placeholder='Search nearby...'/>
-          <Ionicons name='filter-outline' size={28} color='black' onPress={() => {setModalVisibility(true)}}/>
+          <GooglePlacesAutocomplete
+            GooglePlacesDetailsQuery={{fields: "geometry"}}
+            placeholder='Search'
+            fetchDetails={true}
+            onPress={(data, details) => {
+              console.log(data);
+              console.log(details)
+              console.log(details.geometry.location.lat)
+            }}
+            query={{
+              key: 'AIzaSyBZmtSMDn6vO3auJfJn4g1_VqLhnU8PgBo',
+              language:'en'
+            }}
+            onFail={(e) => console.log(e,'fewwfe')}
+          />
+        <Ionicons name='filter-outline' size={28} color='black' onPress={() => {setModalVisibility(true)}}/>
         </View>
 
         <FilterScreen visible={modalVisibility} setVisible={setModalVisibility} filters={filters} setFilters={setFilters}/>
@@ -109,7 +124,12 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-  }, 
+  },
+  fe:{
+    position:'absolute',
+    height:'100%',
+    width:'100%'
+  },
   map: {
     position:'absolute',
     width: Dimensions.get("window").width,
@@ -134,7 +154,7 @@ const styles = StyleSheet.create({
     flexDirection:'row',
     top:0,
     width:'100%',
-    height:50,
+    height:100,
     backgroundColor:'white'
   }
 });
