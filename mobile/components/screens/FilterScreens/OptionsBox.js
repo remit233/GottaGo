@@ -1,11 +1,20 @@
 import { View, StyleSheet, Text, Switch } from "react-native";
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-export default function OptionsBox({icon='help-outline', text='PLACEHOLDER'}) {
+export default function OptionsBox({icon='help-outline', text='PLACEHOLDER', setFilters}) {
     const [isEnabled, setIsEnabled] = useState(false);
-    const toggleSwitch = () => setIsEnabled(previousState => !previousState);
+    const toggleSwitch = () => {
+            setIsEnabled(previousState => !previousState)
+        };
 
+    useEffect(()=> {
+        if(isEnabled) {
+            setFilters((prevState) => {return [...prevState, text]})
+        } else {
+            setFilters((prevState) => {return prevState.filter((filter)=>{return filter!=text})})
+        }
+    },[isEnabled])
     return(
         <View style={styles.option}>
             <Ionicons name={icon} size={28} color='black'/>

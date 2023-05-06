@@ -17,6 +17,7 @@ export default function Map({ setMarkerFocus, setMarker }) {
   const [hasUserCoords, setHasUserCoords] = useState(false);
 
   const [modalVisibility, setModalVisibility] = useState(false);
+  const [filters, setFilters] = useState([])
 
   async function requestGeoPermissions() {
     Location.requestForegroundPermissionsAsync();
@@ -33,38 +34,51 @@ export default function Map({ setMarkerFocus, setMarker }) {
     .then((res) => {
         setNearbyBathrooms(res.data);
         setHasNearbyBathrooms(true);
+        return res.data
     })
   }
-    function CreateUserMarker() {
-        return (
-          <Marker coordinate={{latitude:userLatitude, longitude:userLongitude}} onPress={() => {setMarkerFocus(true); setMarker({title:'You', author:':3'})}}>
-              <Callout>
-                  <Text>{userLatitude}, {userLongitude}</Text>
-              </Callout>
-          </Marker>
-        )
-    }
-    function CreateNearbyBathroomMarkers() {
-        return (
-            nearbyBathrooms.map((bathroom, index)=> {
-                return (
-                  <Marker coordinate={{latitude:bathroom.lat, longitude:bathroom.lng}} key={index} onPress={() => {setMarkerFocus(true); setMarker({title:bathroom.name, author:bathroom.address})}}>
-                      <Callout>
-                          <Text>{bathroom.lat}, {bathroom.lng}</Text>
-                      </Callout>
-                  </Marker>
-                )
-            })
-        )
-    }
+  function CreateUserMarker() {
+      return (
+        <Marker coordinate={{latitude:userLatitude, longitude:userLongitude}} onPress={() => {setMarkerFocus(true); setMarker({title:'You', author:':3'})}}>
+            <Callout>
+                <Text>{userLatitude}, {userLongitude}</Text>
+            </Callout>
+        </Marker>
+      )
+  }
+  function CreateNearbyBathroomMarkers() {
+    return (
+        nearbyBathrooms.map((bathroom, index)=> {
+            return (
+              <Marker coordinate={{latitude:bathroom.lat, longitude:bathroom.lng}} key={index} onPress={() => {setMarkerFocus(true); setMarker({title:bathroom.name, author:bathroom.address})}}>
+                  <Callout>
+                      <Text>{bathroom.lat}, {bathroom.lng}</Text>
+                  </Callout>
+              </Marker>
+            )
+        })
+    )
+  }
 
   useEffect(() => {
     if(hasUserCoords) { fetchNearbyBathrooms() }
   },[hasUserCoords])
 
   useEffect(() => {
+    console.log(filters)
+    var filteredBathrooms = nearbyBathrooms;
+     filters.forEach((filter) => {
+       filteredBathrooms = nearbyBathrooms.filter(bathroom => {return (bathroom?.[filter]) == true} )
+     })
+     console.log(filteredBathrooms)
+    setNearbyBathrooms(filteredBathrooms)
+  },[filters])
+
+  useEffect(() => {
     requestGeoPermissions();
   }, [])
+
+
   return (
     <View style={styles.container}>
       <MapView 
@@ -84,7 +98,7 @@ export default function Map({ setMarkerFocus, setMarker }) {
           <Ionicons name='filter-outline' size={28} color='black' onPress={() => {setModalVisibility(true)}}/>
         </View>
 
-        <FilterScreen visible={modalVisibility} setVisible={setModalVisibility}/>
+        <FilterScreen visible={modalVisibility} setVisible={setModalVisibility} filters={filters} setFilters={setFilters}/>
         <StatusBar style="auto" />
     </View>
   );

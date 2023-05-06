@@ -3,8 +3,8 @@ import { useState } from 'react'
 
 import OptionsBox from './FilterScreens/OptionsBox';
 
-export default function FilterScreen({visible=false, setVisible}) {
-
+export default function FilterScreen({visible, setVisible, filters, setFilters}) {
+    
     return(
         <View style={styles.container}>
             <Modal animationType='slide' visible={visible}>
@@ -14,12 +14,12 @@ export default function FilterScreen({visible=false, setVisible}) {
                     </View>
                     <View style={styles.view}>
                         <Text style={styles.text}>Sort and Filter</Text>
-                        <OptionsBox icon='trail-sign-outline' text='Distance'/>
-                        <OptionsBox icon='star-outline' text='Rating'/>
-                        <OptionsBox icon='timer-outline' text='Average Wait Time'/>
-                        <OptionsBox icon='person-outline' text='Accessibility'/>
-                        <OptionsBox icon='happy-outline' text='Baby Changing Station'/>
-                        <OptionsBox icon='male-female-outline' text='Gender Neutral'/>
+                        <OptionsBox icon='trail-sign-outline' text='Distance' setFilters={setFilters}/>
+                        <OptionsBox icon='star-outline' text='Rating'setFilters={setFilters}/>
+                        <OptionsBox icon='timer-outline' text='Average Wait Time'setFilters={setFilters}/>
+                        <OptionsBox icon='person-outline' text='Accessibility'setFilters={setFilters}/>
+                        <OptionsBox icon='happy-outline' text='Baby Changing Station'setFilters={setFilters}/>
+                        <OptionsBox icon='male-female-outline' text='gender_neutral'setFilters={setFilters}/>
                     </View>
                 </View>
             </Modal>
