@@ -40,7 +40,7 @@ export default function Map({ setMarkerFocus, setMarker }) {
   }
   function CreateUserMarker() {
       return (
-        <Marker coordinate={{latitude:userLatitude, longitude:userLongitude}} onPress={() => {setMarkerFocus(true); setMarker({title:'You', author:':3'})}}>
+        <Marker coordinate={{latitude:userLatitude, longitude:userLongitude}} onPress={() => {setMarkerFocus(true); setMarker({title:'You', author:':3'})}} pinColor='purple'>
             <Callout>
                 <Text>{userLatitude}, {userLongitude}</Text>
             </Callout>
@@ -109,7 +109,7 @@ export default function Map({ setMarkerFocus, setMarker }) {
             }}
             onFail={(e) => console.log(e,'fewwfe')}
           />
-        <Ionicons name='filter-outline' size={28} color='black' onPress={() => {setModalVisibility(true)}}/>
+        <Ionicons name='options-outline' size={28} color='black' onPress={() => {setModalVisibility(true)}}/>
         </View>
 
         <FilterScreen visible={modalVisibility} setVisible={setModalVisibility} filters={filters} setFilters={setFilters}/>
