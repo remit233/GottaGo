@@ -100,9 +100,8 @@ export default function Map({ setMarkerFocus, setMarker }) {
             placeholder='Search'
             fetchDetails={true}
             onPress={(data, details) => {
-              console.log(data);
-              console.log(details)
-              console.log(details.geometry.location.lat)
+              setUserLatitude(details.geometry.location.lat)
+              setUserLongitude(details.geometry.location.lng)
             }}
             query={{
               key: 'AIzaSyBZmtSMDn6vO3auJfJn4g1_VqLhnU8PgBo',
@@ -154,7 +153,6 @@ const styles = StyleSheet.create({
     flexDirection:'row',
     top:0,
     width:'100%',
-    height:100,
     backgroundColor:'white'
   }
 });
