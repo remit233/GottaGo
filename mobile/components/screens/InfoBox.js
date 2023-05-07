@@ -28,11 +28,9 @@ const styles = StyleSheet.create({
     mainContainer: {
         flex:1,
         flexDirection:'row',
-        justifyContent:'space-around',
+        justifyContent:'space-between',
         alignItems:'center',
-        paddingRight:2.5,
-        paddingLeft:2.5,
-        paddingTop:10,
+        paddingTop:8,
         paddingBottom:10,
         borderRadius:8
     },

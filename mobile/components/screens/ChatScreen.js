@@ -1,22 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, KeyboardAvoidingView, Keyboard, Platform, ScrollView } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import MessageModal from './ChatScreens/MessageModal';
+import { BathroomContext } from './context';
 import PostBox from './ChatScreens/PostBox';
 
-export default function ChatScreen({ navigation }) {
-  const [message, setMessage] = useState('');
-  const [messages, setMessages] = useState([]);
+export default function ChatScreen({ navigation}) {
+    const [message, setMessage] = useState('');
+    const [messages, setMessages] = useState([]);
+    
+    const {bathroom, setBathroom} =useContext(BathroomContext)
+    
+    const sendMessage = () => {
+        if (message.trim()) {
+        setMessages([...messages, { text: message, author: 'Me' }]);
+        setMessage('');
+        Keyboard.dismiss();
+        }
+    };
 
-  const sendMessage = () => {
-    if (message.trim()) {
-      setMessages([...messages, { text: message, author: 'Me' }]);
-      setMessage('');
-      Keyboard.dismiss();
-    }
-  };
-
-  return (
+    return (
     
     <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : null} style={styles.container} keyboardVerticalOffset={Platform.OS === 'ios' ? 90 : 0}>
     
@@ -25,7 +28,7 @@ export default function ChatScreen({ navigation }) {
           <TouchableOpacity onPress={() => navigation.goBack()}>
             <Ionicons name="chevron-back-outline" size={24} color="black" />
           </TouchableOpacity>
-          <Text style={styles.text}>Current Bathroom</Text>
+          <Text style={styles.text}>{bathroom.title}</Text>
         </View>
         <ScrollView>
         <View style={styles.chatContainer}>

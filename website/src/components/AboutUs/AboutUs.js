@@ -1,10 +1,16 @@
-import './AboutUs.css'
+import './AboutUs.css';
 
 export default function AboutUs() {
-    return(
-        <div className='about-us section'>
-            <h1 className='about-us-header1'>why we do what we do</h1>
-            <p  className='explanation'>&emsp;In today's world, we rely on technology for almost everything, from ordering food to finding our way around a new city. However, there is one aspect of our daily lives that has been largely overlooked: our bathroom habits. A bathroom app would be a useful tool to help us manage our daily bathroom needs. The app could help us find the nearest public restroom, provide information on the cleanliness of different facilities, and even offer suggestions for eco-friendly bathroom products. Additionally, a bathroom app could be a useful tool for people with medical conditions that require frequent bathroom trips, such as bladder or bowel disorders. With a bathroom app, we could feel more confident and comfortable when we're out and about, knowing that we have access to the information we need to take care of our bathroom needs.</p>
-        </div>
-    )
+  return (
+    <div className='about-us section'>
+      <h1 className='about-us-header1'>Why We Do What We Do</h1>
+      <p className='explanation'>
+        In today's fast-paced world, we often forget about the little things that matter, such as taking care of our bathroom needs. That's where Gotta Go! comes in. We believe that managing your bathroom needs should be as easy as ordering food or finding your way around a new city. With Gotta Go!, you can find the nearest public restroom, get information on the cleanliness of different facilities, and even discover new bathroom locations.
+
+        Whether you have a medical condition that requires frequent bathroom trips, or you're an esstential worker zooming through the streets, Gotta Go! has you covered. Our app is designed to be simple, user-friendly, and reliable, so you can always have access to the information you need to take care of your bathroom needs.
+
+        So why do we do what we do? Because we believe that everyone deserves to feel comfortable and confident, no matter where they are or what they're doing. And with Gotta Go! you can do just that.
+      </p>
+    </div>
+  );
 }
