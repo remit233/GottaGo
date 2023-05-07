@@ -23,17 +23,16 @@ function Navbar() {
   }, []);
 
   return (
-    <nav className="navbar">
-      <div className="nav-container">
-        <Link to="/" className="nav-logo">
-          <img id="kawaii-toilet" src="./kawaiitoilet.jpg" alt="Logo" />
-          <span>
-            Gotta Go!
-          </span>
-        </Link>
-        <ul className={renderNavLinks ? 'nav-links' : 'display-none'}>
-          <li className="nav-item">
-            <Link to="/" className="nav-link" onClick={handleWindowResize}>
+    <nav className='navbar'>
+      <div className='nav-container'>
+        <div className='nav-logo-container'>
+          
+          <Link to='/' className='nav-logo'> Go<span id='tt'>tt</span>a Go<span id='exclamation'>!</span> </Link>
+          <img id='kawaii-toilet' src='./GottaGologo.png'/>
+        </div>
+        <ul className={renderNavLinks ? 'nav-links':'display-none'}>
+          <li className='nav-item'>
+            <Link to='/' className='nav-links' onClick={handleWindowResize}>
               Home
             </Link>
           </li>
