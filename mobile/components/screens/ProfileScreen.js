@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, ScrollView, Image, StyleSheet } from 'react-native';
 
-const GameScreen = ({ navigation }) => {
+const ProfileScreen = ({ navigation }) => {
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <View style={styles.header}>
@@ -115,4 +115,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default GameScreen;
+export default ProfileScreen;
