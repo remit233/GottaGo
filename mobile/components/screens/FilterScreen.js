@@ -9,9 +9,7 @@ export default function FilterScreen({visible, setVisible, filters, setFilters})
         <View style={styles.container}>
             <Modal animationType='slide' visible={visible}>
                 <View style={styles.modalContainer}>
-                    <View style={styles.center}>
-                        <Button style = {styles.button} title='X' onPress={() => {setVisible(false)}}/>
-                    </View>
+                        <Button style = {styles.button} title='CLOSE' onPress={() => {console.log('pres'),setVisible(false)}}/>
                     <View style={styles.view}>
                         <Text style={styles.text}>Sort and Filter</Text>
                         <OptionsBox icon='trail-sign-outline' text='Distance' setFilters={setFilters}/>
@@ -39,11 +37,12 @@ const styles = StyleSheet.create({
     },
     center: {
         position:'absolute',
-        top:25,
+        top:100,
         right:25,
-        width:'100%',
+        width:100,
         alignItems: 'flex-end',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        backgroundColor:'red'
     },
     view: {
         width:'100%',
@@ -56,5 +55,9 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontSize:32,
         paddingBottom: 30
+    },
+    button:{
+        width:'100%',
+        backgroundColor:'green'
     }
 });
