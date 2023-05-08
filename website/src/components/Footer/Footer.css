@@ -75,3 +75,19 @@
   .social-link:hover {
     transform: scale(1.1);
   }
+
+  .submit-button {
+    background-color: #a35ce6;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .submit-button:hover {
+    background-color: #703f9e;
+  }
+  

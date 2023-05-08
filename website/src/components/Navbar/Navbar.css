@@ -29,19 +29,16 @@
   font-weight: 900;
   text-decoration: none;
 }
-
-#tt {
-  color: #8860d0;
-}
-
-#exclamation {
-  color: #c77dff;
+.nav-logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 #kawaii-toilet {
   width: 50px;
   height: auto;
-  margin-right: 10px;
+  margin-left: 10px;
 }
 
 .nav-links {
@@ -82,4 +79,14 @@
 
 .display-none {
   display: none;
+}
+
+
+.welcome-message {
+  display: inline-block;
+  color: #4b3f72;
+  font-size: 20px;
+  padding: 10px 15px;
+  transition: 0.3s;
+
 }

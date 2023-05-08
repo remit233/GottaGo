@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, ScrollView, Image, StyleSheet } from 'react-native';
 
-const GameScreen = ({ navigation }) => {
+const ProfileScreen = ({ navigation }) => {
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <View style={styles.header}>
@@ -100,6 +100,8 @@ const styles = StyleSheet.create({
     marginBottom: 40,
   },
   settingTitle: {
+    alignSelf: 'center',
+    justifyContent: 'center',
     fontSize: 26,
     fontWeight: 'bold',
     padding: 20,
@@ -113,4 +115,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default GameScreen;
+export default ProfileScreen;
