@@ -51,7 +51,7 @@ export default function Map({ setMarkerFocus, setMarker }) {
     return (
         nearbyBathrooms.map((bathroom, index)=> {
             return (
-              <Marker coordinate={{latitude:bathroom.lat, longitude:bathroom.lng}} key={index} onPress={() => {setMarkerFocus(true); setMarker({title:bathroom.name, author:bathroom.address})}}>
+              <Marker coordinate={{latitude:bathroom.lat, longitude:bathroom.lng}} key={index} onPress={() => {setMarkerFocus(true); setMarker({id:bathroom.id, title:bathroom.name, author:bathroom.address})}}>
                   <Callout>
                       <Text>{bathroom.lat}, {bathroom.lng}</Text>
                   </Callout>
