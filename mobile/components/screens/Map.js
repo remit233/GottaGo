@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { Dimensions, StyleSheet, Text, View, TextInput } from 'react-native';
+import { Dimensions, StyleSheet, Text, View, TextInput, Button } from 'react-native';
 import MapView, { Callout, Marker } from "react-native-maps";
 import {useState, useEffect} from 'react';
 import * as Location from 'expo-location';
@@ -63,7 +63,7 @@ export default function Map({ setMarkerFocus, setMarker }) {
 
   useEffect(() => {
     if(hasUserCoords) { fetchNearbyBathrooms() }
-  },[hasUserCoords])
+  },[userLongitude, userLatitude])
 
   useEffect(() => {
     console.log(filters)
@@ -111,7 +111,7 @@ export default function Map({ setMarkerFocus, setMarker }) {
           />
         <Ionicons name='options-outline' size={28} color='black' onPress={() => {setModalVisibility(true)}}/>
         </View>
-
+        <View style={styles.locationButton}><Button title='current location' onPress={()=>{requestGeoPermissions()}}/></View>
         <FilterScreen visible={modalVisibility} setVisible={setModalVisibility} filters={filters} setFilters={setFilters}/>
         <StatusBar style="auto" />
     </View>
@@ -123,11 +123,6 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  fe:{
-    position:'absolute',
-    height:'100%',
-    width:'100%'
   },
   map: {
     position:'absolute',
@@ -154,5 +149,9 @@ const styles = StyleSheet.create({
     top:0,
     width:'100%',
     backgroundColor:'white'
+  },
+  locationButton: {
+    position:'absolute',
+    bottom:50
   }
 });
