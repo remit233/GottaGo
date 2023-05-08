@@ -2,9 +2,27 @@ import * as React from 'react';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Text,TextInput,StyleSheet, View } from 'react-native';
-export default function Login(){
+export default function Login({ navigation }){
+    React.useEffect(() => {
+        const unsubscribe = navigation.getParent().addListener('tabPress', (e) => {
+            // Do something
+            alert('Tab pressed!');
+          });
+      
+          return unsubscribe;
+        }, []);
     return (
         <SafeAreaView>
+        <View>
+                <ImageBackground
+                    style={{
+                        height: 250,
+                    }} 
+                    resizeMode="contain"
+                    source={require('./Images/GottaGologo1.png')}
+                    />
+        </View>
+
         <View style={{alignItems: "center"}}>
         <Text style={styles.title}>Login Here</Text>
         </View>

@@ -2,8 +2,10 @@ import { Dimensions, ImageBackground, SafeAreaView, StyleSheet, Text, View } fro
 import React from "react";
 import { TouchableOpacity } from "react-native-gesture-handler";
 // const {height} = Dimensions.get("window");
+import Login from "../screens/Login";
+import Register from "../screens/Register";
 
-const UserLogin = () => {
+const UserLogin = ({navigation}) => {
     return(
         <SafeAreaView>
             <View>
@@ -27,7 +29,9 @@ const UserLogin = () => {
                 
             }}>
             <View style = {{flexDirection: 'column'}}>
-            <TouchableOpacity  style={styles.loginbutton}>
+            <TouchableOpacity  style={styles.loginbutton}
+            onPress={()=>navigation.navigate('Login')}
+            >
                 <Text style = {{fontWeight: 'bold',
                     color: "#FFFFFF"
                 }}> Login </Text>

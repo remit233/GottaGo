@@ -8,16 +8,33 @@ import HomeScreen from './screens/HomeScreen';
 import ChatScreen from './screens/ChatScreen';
 import GameScreen from './screens/GameScreen';
 import ProfileScreen from './screens/ProfileScreen';
+
+import UserLogin from './screens/UserLogin';
+import Login from './screens/Login';
+import Register from './screens/Register';
 //Screen names
 const homeName = "Home";
 const chatName = "Chat";
 const gameName = "Game";
 const profileName = "Profile";
-
+const userlogin = "UserLogin";
+const login = "Login";
+const register = "Register";
 
 const Tab = createBottomTabNavigator();
+const Stack = createNativeStackNavigator();
 
-export default function MainContainer() {
+function ProfileContainer(){
+  return(
+    <Stack.Navigator>
+      <Stack.Screen name={userlogin} component={UserLogin}/>
+      <Stack.Screen name={login} component={Login}/>
+      <Stack.Screen name={register} component={UserLogin}/>
+
+      </Stack.Navigator>
+  );
+}
+function MainContainer() {
   return (
     <NavigationContainer>
       <Tab.Navigator
@@ -66,3 +83,4 @@ export default function MainContainer() {
     </NavigationContainer>
   );
 }
+export default MainContainer;
