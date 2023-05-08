@@ -13,7 +13,7 @@ export default function ChatScreen({ navigation}) {
     
     const {bathroom, setBathroom} =useContext(BathroomContext)
     console.log('Context Bathroom:', bathroom)
-
+    console.log({content:message, user_id:1, bathroom:bathroom.id})
     function updateMessages() {
       axios({
         method:'GET',
@@ -26,7 +26,14 @@ export default function ChatScreen({ navigation}) {
 
     const sendMessage = () => {
         if (message.trim()) {
-        setMessages([...messages, { text: message, author: 'Me' }]);
+          axios({
+            method:'POST',
+            url:`https://loose-temper-production.up.railway.app/message/create`,
+            data: {content:message, user_id:1, bathroom_id:bathroom.id},
+            headers:{'Content-Type': 'application/json'} })
+          .then((res) => {
+            updateMessages()
+        })
         setMessage('');
         Keyboard.dismiss();
         }
