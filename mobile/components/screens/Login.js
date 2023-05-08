@@ -20,7 +20,7 @@ export default function Login(){
         </View>    
         
         <View style={{marginVertical: 33}}>
-        <TouchableOpacity placeholder="Password"
+        <TouchableOpacity
         style={styles.button}>
         <Text style={{
             fontWeight: 'bold'}}>Login</Text>
