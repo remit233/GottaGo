@@ -89,7 +89,8 @@ export default function Map({ setMarkerFocus, setMarker }) {
           longitude:userLongitude,
           latitudeDelta: 0.01,
           longitudeDelta: 0.01
-        }}>
+        }}
+        onLongPress={(data)=>{console.log(data);console.log(data.nativeEvent.coordinate)}}>
         {hasUserCoords ? <CreateUserMarker/> : null}
         {hasNearbyBathrooms ? <CreateNearbyBathroomMarkers/> : null}
         
