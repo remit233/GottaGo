@@ -1,9 +1,10 @@
 import React from 'react';
-import './Login.css';
+import './SignUp.css';
+import Login from '../Login/Login';
 import { useNavigate } from 'react-router-dom';
-import useAuth from '../auth/useAuth.js';
+import useAuth from '../auth/useAuth';
 
-const Login = () => {
+const SignUp = () => {
   const { login, isAuthenticated } = useAuth();
   const navigate = useNavigate();
 
@@ -20,8 +21,8 @@ const Login = () => {
   return (
     <div className="login-container">
       <div className="login-content">
-        <h1>Login</h1>
-        <p>Please log in to access your account.</p>
+        <h1>Sign up</h1>
+        <p>Use Auth0 to Sign up.</p>
         <button className="login-button" onClick={handleLogin}>
           Login with Auth0
         </button>
@@ -30,4 +31,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default SignUp;

@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './components/App/App';
+import App from './components/App/App.js';
 import { BrowserRouter } from 'react-router-dom';
-import reportWebVitals from './reportWebVitals';
+import reportWebVitals from './reportWebVitals.js';
 import { Auth0Provider } from '@auth0/auth0-react';
 import './index.css'
 

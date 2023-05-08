@@ -1,6 +1,6 @@
 // Home.js
 import './Home.css';
-import { GoogleMap, useLoadScript, Marker } from '@react-google-maps/api';
+import { GoogleMap, useLoadScript, MarkerF } from '@react-google-maps/api';
 import { useState, useEffect } from 'react';
 
 export default function Home() {
@@ -13,12 +13,27 @@ export default function Home() {
     googleMapsApiKey: 'AIzaSyACMRwb-sr4h4K3RPcb48mCe58UrBn64t8',
   });
 
+  const fetchBathrooms = async (latitude, longitude) => {
+    const apiUrl = `http://localhost:3001/bathrooms?lat=${latitude}&lng=${longitude}`;
+    const response = await fetch(apiUrl);
+    const data = await response.json();
+    setBathrooms(data);
+    console.log(data);
+  };
+  
+
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((pos) => {
       setUserLatitude(pos.coords.latitude);
       setUserLongitude(pos.coords.longitude);
     });
   }, []);
+
+  useEffect(() => {
+    if (isLoaded) {
+      fetchBathrooms(userLatitude, userLongitude);
+    }
+  }, [isLoaded, userLatitude, userLongitude]);
 
   const handleAddressChange = (e) => {
     setAddress(e.target.value);
@@ -34,20 +49,8 @@ export default function Home() {
     const location = geocodeData.results[0].geometry.location;
     setUserLatitude(location.lat);
     setUserLongitude(location.lng);
+    fetchBathrooms(location.lat, location.lng); // Fetch bathrooms for the searched location
   };
-
-  useEffect(() => {
-    const fetchBathrooms = async () => {
-      const apiUrl = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${userLatitude},${userLongitude}&radius=1500&keyword=public+toilet&key=AIzaSyACMRwb-sr4h4K3RPcb48mCe58UrBn64t8`;
-      const response = await fetch(apiUrl);
-      const data = await response.json();
-      setBathrooms(data.results);
-    };
-
-    if (isLoaded && address) {
-      fetchBathrooms();
-    }
-  }, [isLoaded, userLatitude, userLongitude, address]);
 
   if (!isLoaded) return <div>Loading...</div>;
 
@@ -77,13 +80,14 @@ export default function Home() {
           center={{ lat: userLatitude, lng: userLongitude }}
           mapContainerClassName='map-container'
         >
-          {bathrooms.map((bathroom) => (
-            <Marker
-              key={bathroom.place_id}
-              position={{ lat: bathroom.geometry.location.lat, lng: bathroom.geometry.location.lng }}
-              title={bathroom.name}
-            />
-          ))}
+       {bathrooms.map((bathroom, index) => (
+  <MarkerF
+    key={bathroom.place_id || index}
+    position={{ lat: bathroom.geometry.location.lat, lng: bathroom.geometry.location.lng }}
+    title={bathroom.name}
+  />
+))}
+
         </GoogleMap>
       </section>
     </div>

@@ -1,14 +1,14 @@
 import React from 'react';
-import Navbar from '../Navbar/Navbar';
-import Footer from '../Footer/Footer';
+import Navbar from '../Navbar/Navbar.js';
+import Footer from '../Footer/Footer.js';
 import { Routes, Route } from 'react-router-dom';
 import './App.css';
 
-import Landing from '../Landing/Landing';
-import Login from '../Login/Login';
-import NotFound from '../NotFound/NotFound';
+import Landing from '../Landing/Landing.js';
+import Login from '../Login/Login.js';
+import NotFound from '../NotFound/NotFound.js';
 import { Auth0Provider } from '@auth0/auth0-react';
-import useAuth from '../auth/useAuth'
+import useAuth from '../auth/useAuth.js'
 
 function App() {
   const { isAuthenticated, login, logout, user } = useAuth();
