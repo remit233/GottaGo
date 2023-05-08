@@ -22,7 +22,7 @@ const login = "Login";
 const register = "Register";
 
 const Tab = createBottomTabNavigator();
-const Stack = createNativeStackNavigator();
+// const Stack = createNativeStackNavigator();
 
 function ProfileContainer(){
   return(
