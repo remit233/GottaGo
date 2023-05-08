@@ -19,7 +19,6 @@ export default function Map({ setMarkerFocus, setMarker }) {
 
   const [modalVisibility, setModalVisibility] = useState(false);
   const [filters, setFilters] = useState([])
-
   async function requestGeoPermissions() {
     Location.requestForegroundPermissionsAsync();
     setUserLatitude((await Location.getCurrentPositionAsync()).coords.latitude);
@@ -60,7 +59,10 @@ export default function Map({ setMarkerFocus, setMarker }) {
         })
     )
   }
-
+  function CreateMarker({longitude, latitude}) {
+    setUserLatitude(latitude)
+    setUserLongitude(longitude)
+  }
   useEffect(() => {
     if(hasUserCoords) { fetchNearbyBathrooms() }
   },[userLongitude, userLatitude])
@@ -90,9 +92,10 @@ export default function Map({ setMarkerFocus, setMarker }) {
           latitudeDelta: 0.01,
           longitudeDelta: 0.01
         }}
-        onLongPress={(data)=>{console.log(data);console.log(data.nativeEvent.coordinate)}}>
-        {hasUserCoords ? <CreateUserMarker/> : null}
-        {hasNearbyBathrooms ? <CreateNearbyBathroomMarkers/> : null}
+        onLongPress={(data)=>{CreateMarker(data.nativeEvent.coordinate)}}
+        >
+          {hasUserCoords ? <CreateUserMarker/> : null}
+          {hasNearbyBathrooms ? <CreateNearbyBathroomMarkers/> : null}
         
         </MapView>
         <View style={styles.searchBar}>
