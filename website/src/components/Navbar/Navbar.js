@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
-import useAuth from '../auth/useAuth'
+import useAuth from '../auth/useAuth.js'
 
 function Navbar() {
   const [renderNavLinks, setRenderNavLinks] = useState(true);
