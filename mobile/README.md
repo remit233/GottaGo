@@ -7,6 +7,9 @@
 * npx expo install react-native-gesture-handler react-native-reanimated react-native-screens react-native-safe-area-context @react-native-community/masked-view
 * npx add @react-navigation/stack
 * npm add @react-navigation/bottom-tabs
+* npm install @react-navigation/drawer
+
+
 
 * Run 'npx expo start'
 * Download expo app
