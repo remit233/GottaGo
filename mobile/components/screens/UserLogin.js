@@ -17,9 +17,7 @@ const UserLogin = () => {
             
             </View>
 
-            <View>
-            <Text>Testing How Login Page is</Text>
-            </View>
+            
             
             <View style={{
                 display: "flex",
@@ -30,7 +28,7 @@ const UserLogin = () => {
             }}>
             <View style = {{flexDirection: 'column'}}>
             <TouchableOpacity  style={styles.loginbutton}>
-                <Text style = {{
+                <Text style = {{fontWeight: 'bold',
                     color: "#FFFFFF"
                 }}> Login </Text>
             </TouchableOpacity>
@@ -38,8 +36,9 @@ const UserLogin = () => {
 
             <View>
             <TouchableOpacity  style={styles.loginbutton}>
-                <Text style = {{
+                <Text style = {{fontWeight: 'bold',
                     color: "#FFFFFF"
+
                 }}> Register </Text>
             </TouchableOpacity>
             </View>
@@ -52,10 +51,16 @@ const UserLogin = () => {
 
 const styles = StyleSheet.create({
     loginbutton:{
+        marginVertical: 8,
+        padding:22,
+        backgroundColor:"#6060e4",
+        fontSize: 15,
+        color: "#000000",
+        fontWeight: 'bold',
+        borderRadius: 11,
+        marginHorizontal: 20,
         
-        alignItems: 'center',
-        backgroundColor: '#743EA7',
-        padding: 10,
+
     }
 
 });

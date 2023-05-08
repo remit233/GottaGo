@@ -7,7 +7,7 @@ import Register from '../screens/Register';
 export default function GameScreen({navigation}){
     return(
         <View>
-        <Register/>
+        <UserLogin/>
             </View>
     );
 }
