@@ -4,21 +4,43 @@ import { Ionicons } from '@expo/vector-icons';
 import MessageModal from './ChatScreens/MessageModal';
 import { BathroomContext } from './context';
 import PostBox from './ChatScreens/PostBox';
+import { useEffect } from 'react';
+import axios from 'axios';
 
 export default function ChatScreen({ navigation}) {
     const [message, setMessage] = useState('');
     const [messages, setMessages] = useState([]);
     
     const {bathroom, setBathroom} =useContext(BathroomContext)
-    
+    console.log('Context Bathroom:', bathroom)
+    console.log({content:message, user_id:1, bathroom:bathroom.id})
+    function updateMessages() {
+      axios({
+        method:'GET',
+        url:`https://loose-temper-production.up.railway.app/message/get/${bathroom.id}`,
+        headers:{'Content-Type': 'application/json'} })
+      .then((res) => {
+        setMessages(res.data)
+      })
+    }
+
     const sendMessage = () => {
         if (message.trim()) {
-        setMessages([...messages, { text: message, author: 'Me' }]);
+          axios({
+            method:'POST',
+            url:`https://loose-temper-production.up.railway.app/message/create`,
+            data: {content:message, user_id:1, bathroom_id:bathroom.id},
+            headers:{'Content-Type': 'application/json'} })
+          .then((res) => {
+            updateMessages()
+        })
         setMessage('');
         Keyboard.dismiss();
         }
     };
-
+    useEffect(() => {
+      updateMessages()
+    },[bathroom])
     return (
     
     <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : null} style={styles.container} keyboardVerticalOffset={Platform.OS === 'ios' ? 90 : 0}>
@@ -33,7 +55,7 @@ export default function ChatScreen({ navigation}) {
         <ScrollView>
         <View style={styles.chatContainer}>
           {messages.map((msg, index) => (
-            <PostBox key={index} title={msg.text} author={msg.author} />
+            <PostBox key={index} title={msg.content} author={msg.user_id} />
           ))}
         </View>
         </ScrollView>

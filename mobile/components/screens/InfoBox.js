@@ -2,7 +2,8 @@ import { View, StyleSheet, Text } from "react-native"
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 
-function Card({type}) {
+function Card({type, bathroom}) {
+    console.log(bathroom)
     return (
         <View style={styles.cardContainer}>
             <View style={styles.wrapper}>
@@ -14,11 +15,11 @@ function Card({type}) {
 }
 
 
-export default function InfoBox() {
+export default function InfoBox(bathroom) {
     return (
         <View style={styles.mainContainer}>
             <Card type={'timer-outline'}/>
-            <Card type={'people-outline'}/>
+            <Card type={'people-outline'} bathroom={bathroom}/>
             <Card type={'star-outline'}/>
         </View>
     )

@@ -5,7 +5,7 @@ import Animated, { useAnimatedStyle, useSharedValue } from "react-native-reanima
 import PostBox from './ChatScreens/PostBox'
 import InfoBox from "./InfoBox"
 
-export default function BottomTab({title, author, type}) {
+export default function BottomTab({title, author, type, bathroom}) {
     const translateY = useSharedValue(0)
     const context = useSharedValue({y:0})
     const gesture = Gesture.Pan()
@@ -22,7 +22,7 @@ export default function BottomTab({title, author, type}) {
         <GestureDetector gesture={gesture}>
             <Animated.View style={[styles.container, bottomSheetStyle]}>
                 <PostBox title={title} author={author} imag={type}/>
-                <InfoBox/>
+                <InfoBox bathroom={bathroom}/>
             </Animated.View>
         </GestureDetector>
     )

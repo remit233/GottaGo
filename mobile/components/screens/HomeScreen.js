@@ -1,13 +1,12 @@
 //Home screen
 import * as React from 'react';
 import { View, StyleSheet } from 'react-native';
-import Animated from 'react-native-reanimated';
-import {GestureDetector} from 'react-native-gesture-handler'
 
 import Map from './Map';
 import PostBox from './ChatScreens/PostBox';
 import BottomTab from './BottomTab';
 import { BathroomContext } from './context';
+import FilterScreen from './FilterScreen';
 
 
 export default function HomeScreen({navigation}){
@@ -25,7 +24,7 @@ export default function HomeScreen({navigation}){
     return(
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
             <Map setMarkerFocus={setMarkerFocus} setMarker={setMarker}/>
-            {markerFocus?<BottomTab title={marker.title} author={marker.author} type='defaultBathroom'/>:null}
+            {markerFocus?<BottomTab title={marker.title} author={marker.author} type='defaultBathroom' bathroom={bathroom}/>:null}
         </View>
     );
 }
