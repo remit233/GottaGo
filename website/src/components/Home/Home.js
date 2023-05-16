@@ -44,6 +44,7 @@ export default function Home() {
     const locationData = await location.json();
     setCurrentLocation(locationData.results[0].formatted_address);
   };
+  
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((pos) => {
@@ -135,20 +136,21 @@ export default function Home() {
       ))}
 
    {selectedBathroom && (
-    <InfoWindow
-      position={{ 
-        lat: selectedBathroom.geometry.location.lat, 
-        lng: selectedBathroom.geometry.location.lng 
-      }}
-      onCloseClick={() => {
-        setSelectedBathroom(null);
-      }}
-    >
-      <div>
-        <h2>{selectedBathroom.name}</h2>
-        <p>{selectedBathroom.address}</p>
-      </div>
-    </InfoWindow>
+   <InfoWindow
+   position={{ 
+     lat: selectedBathroom.geometry.location.lat, 
+     lng: selectedBathroom.geometry.location.lng 
+   }}
+   onCloseClick={() => {
+     setSelectedBathroom(null);
+   }}
+ >
+   <div>
+     <h2>{selectedBathroom.name}</h2>
+     <p>{selectedBathroom.vicinity || selectedBathroom.formatted_address}</p>
+   </div>
+ </InfoWindow>
+ 
   )}
 </GoogleMap>
   </section>
