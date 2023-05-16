@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { GoogleMap, useLoadScript, Marker } from '@react-google-maps/api';
+import { GoogleMap, useLoadScript, Marker, InfoWindow } from '@react-google-maps/api';
 import './Home.css';
 
 export default function Home() {
@@ -13,6 +13,8 @@ export default function Home() {
   const mapRef = useRef(); 
   const [bathroomCount, setBathroomCount] = useState(0);
   const [currentLocation, setCurrentLocation] = useState('');
+  const [selectedBathroom, setSelectedBathroom] = useState(null);
+
 
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: 'AIzaSyACMRwb-sr4h4K3RPcb48mCe58UrBn64t8',
@@ -113,7 +115,7 @@ export default function Home() {
       </section>
 
       <section className='map-section'>
-        <p>Drag the map to change the center location, then click 'Search Bathrooms Near Map Center' to see nearby bathrooms based on the new location.</p>
+        <p>Drag the map to change the center location, then click 'Search Bathrooms Near Map Center' to see nearby bathrooms based on the new location or search by address using the search bar.</p>
     <GoogleMap
       zoom={15}
       center={mapCenter}
@@ -126,9 +128,29 @@ export default function Home() {
           key={bathroom.place_id || index}
           position={{ lat: bathroom.geometry.location.lat, lng: bathroom.geometry.location.lng }}
           title={bathroom.name}
+          onClick={() => {
+            setSelectedBathroom(bathroom);
+          }}
         />
       ))}
-    </GoogleMap>
+
+   {selectedBathroom && (
+    <InfoWindow
+      position={{ 
+        lat: selectedBathroom.geometry.location.lat, 
+        lng: selectedBathroom.geometry.location.lng 
+      }}
+      onCloseClick={() => {
+        setSelectedBathroom(null);
+      }}
+    >
+      <div>
+        <h2>{selectedBathroom.name}</h2>
+        <p>{selectedBathroom.address}</p>
+      </div>
+    </InfoWindow>
+  )}
+</GoogleMap>
   </section>
 </div>
   );}
