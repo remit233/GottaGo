@@ -1,12 +1,12 @@
 import express from 'express';
 import fetch from 'node-fetch';
-import cors from 'cors'; // Import the cors package
+import cors from 'cors'; 
 
 const app = express();
 const port = 3001;
 
 app.use(express.json());
-app.use(cors()); // Use cors middleware
+app.use(cors()); 
 
 app.get('/bathrooms', async (req, res) => {
   const { lat, lng } = req.query;
