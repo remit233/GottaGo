@@ -12,6 +12,7 @@ export default function Home() {
   const searchInputRef = useRef(null);
   const mapRef = useRef(); 
   const [bathroomCount, setBathroomCount] = useState(0);
+  const [currentLocation, setCurrentLocation] = useState('');
 
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: 'AIzaSyACMRwb-sr4h4K3RPcb48mCe58UrBn64t8',
@@ -37,6 +38,9 @@ export default function Home() {
     setBathrooms(data);
     setBathroomCount(data.length);
     console.log(data);
+    const location = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=AIzaSyACMRwb-sr4h4K3RPcb48mCe58UrBn64t8`);
+    const locationData = await location.json();
+    setCurrentLocation(locationData.results[0].formatted_address);
   };
 
   useEffect(() => {
@@ -103,7 +107,9 @@ export default function Home() {
           <button type='submit'>Search Near Address</button>
         </form>
         <button type='button' onClick={handleSearchNearby}>Search Bathrooms Near Map Center</button>
-        <p>{bathroomCount} bathrooms found</p>
+        <p>Searching Near:</p>
+        <p>{currentLocation} :</p>
+         <p className="address">{bathroomCount} bathrooms found </p>
       </section>
 
       <section className='map-section'>

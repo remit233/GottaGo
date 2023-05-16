@@ -83,3 +83,14 @@
   font-style: italic;
   color: #888;
 }
+
+.search-section p {
+  font-size: 18px;
+}
+
+.search-section p.address {
+  font-size: 26px;
+  color: #4c427a;
+  margin-top: 10px;
+}
+
