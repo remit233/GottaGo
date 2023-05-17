@@ -46,6 +46,21 @@ p {
   margin-bottom: 20px;
 }
 
+.auth-button {
+  display: inline-block;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  padding: 1rem 2rem;
+  border-radius: 5px;
+  text-transform: uppercase;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  cursor: pointer;
+  color: #ffffff;
+  background-color: #180067;
+  border: none;
+  margin-bottom: 20px;
+}
+
 .login-button:hover {
   background-color: #704de4;
 }

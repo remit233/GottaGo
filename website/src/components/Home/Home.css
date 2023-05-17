@@ -5,7 +5,7 @@
   grid-template-rows: auto 1fr;
   gap: 10px;
   height: 100vh;
-  padding: 20px;
+  padding: 0 20px 70px; 
   box-sizing: border-box;
 }
 
