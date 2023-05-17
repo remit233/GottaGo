@@ -1,6 +1,10 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { GoogleMap, useLoadScript, Marker, InfoWindow } from '@react-google-maps/api';
 import './Home.css';
+import Spinner from '../Spinner/Spinner.js'
+
+
+const libraries = ['places'];
 
 export default function Home() {
   const [userLatitude, setUserLatitude] = useState(40.768497649503715);
@@ -14,11 +18,12 @@ export default function Home() {
   const [bathroomCount, setBathroomCount] = useState(0);
   const [currentLocation, setCurrentLocation] = useState('');
   const [selectedBathroom, setSelectedBathroom] = useState(null);
-
+  const [loading, setLoading] = useState(false);
+  
 
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: 'AIzaSyACMRwb-sr4h4K3RPcb48mCe58UrBn64t8',
-    libraries: ['places'],
+    libraries
   });
 
   const onMapLoad = useCallback((map) => {
@@ -34,6 +39,7 @@ export default function Home() {
   }, []);
 
   const fetchBathrooms = async (latitude, longitude) => {
+    setLoading(true); // Start loading
     const apiUrl = `http://localhost:3001/bathrooms?lat=${latitude}&lng=${longitude}`;
     const response = await fetch(apiUrl);
     const data = await response.json();
@@ -43,6 +49,7 @@ export default function Home() {
     const location = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=AIzaSyACMRwb-sr4h4K3RPcb48mCe58UrBn64t8`);
     const locationData = await location.json();
     setCurrentLocation(locationData.results[0].formatted_address);
+    setLoading(false); // Stop loading
   };
   
 
@@ -88,7 +95,8 @@ export default function Home() {
   };
 
   if (loadError) return <div>Error loading maps</div>;
-  if (!isLoaded) return <div>Loading...</div>;
+  if (loading || !isLoaded) return <Spinner />;
+
 
   return (
     <div className='home'>
@@ -123,6 +131,7 @@ export default function Home() {
       onLoad={onMapLoad}
       onDragEnd={onMapDragEnd}
       mapContainerClassName='map-container'
+      options={{ gestureHandling: "greedy" }}
     >
       {bathrooms.map((bathroom, index) => (
         <Marker
