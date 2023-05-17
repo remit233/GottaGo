@@ -1,0 +1,53 @@
+/* Userlanding.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+.user-landing {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 100px 50px;
+  background-color: #f3eaff; /* light purple background */
+  height: auto;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+.user-landing-title {
+  color: #4b3f72; /* dark purple text */
+  font-size: 3em;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.user-landing-subtitle {
+  color: #8860d0; /* medium purple text */
+  font-size: 2em;
+  font-weight: 400;
+  margin-bottom: 30px;
+}
+
+.user-landing-description {
+  color: #4b3f72; /* dark purple text */
+  font-size: 1.2em;
+  text-align: center;
+  max-width: 800px;
+  margin-bottom: 50px;
+  line-height: 1.8;
+}
+
+.user-landing-button {
+  background-color: #8860d0; /* bright purple button */
+  color: #ffffff; /* white text */
+  padding: 15px 30px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.2em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.user-landing-button:hover {
+  background-color: #744bc6; /* darker purple on hover */
+}
