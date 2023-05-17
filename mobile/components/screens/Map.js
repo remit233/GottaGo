@@ -28,10 +28,13 @@ export default function Map({ setMarkerFocus, setMarker }) {
     setHasUserCoords(true);
   }
   function fetchGoogleBathrooms() {
-    fetch(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${userLatitude},${userLongitude}&radius=1500&keyword=public+toilet&key=AIzaSyACMRwb-sr4h4K3RPcb48mCe58UrBn64t8`)
+    const apiUrl = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${userLatitude},${userLongitude}&radius=1500&keyword=public+toilet&key=AIzaSyACMRwb-sr4h4K3RPcb48mCe58UrBn64t8`
+
+    fetch(apiUrl)
     .then((res) => {
-      res.json().then((resp) => {console.log(resp.results.geometry);setGoogleBathrooms(resp.results)})
-    })
+        res.json().then((resp) => {
+          setGoogleBathrooms(resp.results)});
+      })
   }
 
 
@@ -74,7 +77,7 @@ export default function Map({ setMarkerFocus, setMarker }) {
     return (
         googleBathrooms.map((bathroom, index)=> {
             return (
-              <Marker coordinate={{latitude:bathroom.geometry.location.lat, longitude:bathroom.geometry.location.lng}} key={index} onPress={() => {setMarkerFocus(true); setMarker({id:bathroom.id, title:bathroom.name, author:bathroom.address})}}>
+              <Marker coordinate={{latitude:bathroom.geometry.location.lat, longitude:bathroom.geometry.location.lng}} key={index} onPress={() => {setMarkerFocus(true); setMarker({id:bathroom.id, title:bathroom.name, author:bathroom.vicinity, lat:place.geometry.location.lat, lng:place.geometry.location.lng})}} pinColor='green'>
                   <Callout>
                       <Text>{bathroom.geometry.location.lat}, {bathroom.geometry.location.lng}</Text>
                   </Callout>
@@ -121,6 +124,7 @@ export default function Map({ setMarkerFocus, setMarker }) {
         >
           {hasUserCoords ? <CreateUserMarker/> : null}
           {hasNearbyBathrooms ? <CreateNearbyBathroomMarkers/> : null}
+          {hasUserCoords ? <CreateGoogleBathroomMarkers/> : null}
         
         </MapView>
         <View style={styles.searchBar}>
