@@ -12,8 +12,6 @@ export default function ChatScreen({ navigation}) {
     const [messages, setMessages] = useState([]);
     
     const {bathroom, setBathroom} =useContext(BathroomContext)
-    console.log('Context Bathroom:', bathroom)
-    console.log({content:message, user_id:1, bathroom:bathroom.id})
     function updateMessages() {
       axios({
         method:'GET',

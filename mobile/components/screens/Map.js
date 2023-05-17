@@ -14,6 +14,8 @@ export default function Map({ setMarkerFocus, setMarker }) {
 
   const [nearbyBathrooms, setNearbyBathrooms] = useState([]);
 
+  const [googleBathrooms, setGoogleBathrooms] = useState([]);
+
   const [hasNearbyBathrooms, setHasNearbyBathrooms] = useState(false);
   const [hasUserCoords, setHasUserCoords] = useState(false);
 
@@ -25,6 +27,14 @@ export default function Map({ setMarkerFocus, setMarker }) {
     setUserLongitude((await Location.getCurrentPositionAsync()).coords.longitude);
     setHasUserCoords(true);
   }
+  function fetchGoogleBathrooms() {
+    fetch(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${userLatitude},${userLongitude}&radius=1500&keyword=public+toilet&key=AIzaSyACMRwb-sr4h4K3RPcb48mCe58UrBn64t8`)
+    .then((res) => {
+      res.json().then((resp) => {console.log(resp.results.geometry);setGoogleBathrooms(resp.results)})
+    })
+  }
+
+
   function fetchNearbyBathrooms() {
     axios({
         method:'POST',
@@ -59,12 +69,27 @@ export default function Map({ setMarkerFocus, setMarker }) {
         })
     )
   }
+
+  function CreateGoogleBathroomMarkers() {
+    return (
+        googleBathrooms.map((bathroom, index)=> {
+            return (
+              <Marker coordinate={{latitude:bathroom.geometry.location.lat, longitude:bathroom.geometry.location.lng}} key={index} onPress={() => {setMarkerFocus(true); setMarker({id:bathroom.id, title:bathroom.name, author:bathroom.address})}}>
+                  <Callout>
+                      <Text>{bathroom.geometry.location.lat}, {bathroom.geometry.location.lng}</Text>
+                  </Callout>
+              </Marker>
+            )
+        })
+    )
+  }
+
   function CreateMarker({longitude, latitude}) {
     setUserLatitude(latitude)
     setUserLongitude(longitude)
   }
   useEffect(() => {
-    if(hasUserCoords) { fetchNearbyBathrooms() }
+    if(hasUserCoords) { fetchNearbyBathrooms(); fetchGoogleBathrooms() }
   },[userLongitude, userLatitude])
 
   useEffect(() => {
@@ -111,7 +136,7 @@ export default function Map({ setMarkerFocus, setMarker }) {
               key: 'AIzaSyBZmtSMDn6vO3auJfJn4g1_VqLhnU8PgBo',
               language:'en'
             }}
-            onFail={(e) => console.log(e,'fewwfe')}
+            onFail={(e) => console.log('error: ',e)}
           />
         <Ionicons name='options-outline' size={28} color='black' onPress={() => {setModalVisibility(true)}}/>
         </View>
