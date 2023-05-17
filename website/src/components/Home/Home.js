@@ -4,6 +4,8 @@ import './Home.css';
 
 
 
+
+
 const libraries = ['places'];
 
 export default function Home() {
@@ -18,7 +20,9 @@ export default function Home() {
   const [bathroomCount, setBathroomCount] = useState(0);
   const [currentLocation, setCurrentLocation] = useState('');
   const [selectedBathroom, setSelectedBathroom] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [loading] = useState(false);
+  
+
   
 
   const { isLoaded, loadError } = useLoadScript({
@@ -100,70 +104,73 @@ export default function Home() {
 
   return (
     <div className='home'>
-      <header className='header'>
-        <h1>Find Nearby Public Restrooms</h1>
-      </header>
+      
+        <>
+          <header className='header'>
+            <h1>Find Nearby Public Restrooms</h1>
+          </header>
 
-      <section className='search-section'>
-        <h2>Search by address:</h2>
-        <form className='search-form' onSubmit={handleSubmit}>
-          <input
-            type='text'
-            name='search'
-            ref={searchInputRef}
-            value={address}
-            onChange={handleAddressChange}
-            placeholder='Enter an address or location'
-          />
-          <button type='submit'>Search Near Address</button>
-        </form>
-        <button type='button' onClick={handleSearchNearby}>Search Bathrooms Near Map Center</button>
-        <p>Searching Near:</p>
-        <p>{currentLocation} :</p>
-         <p className="address">{bathroomCount} bathrooms found </p>
-      </section>
+          <section className='search-section'>
+            <h2>Search by address:</h2>
+            <form className='search-form' onSubmit={handleSubmit}>
+              <input
+                type='text'
+                name='search'
+                ref={searchInputRef}
+                value={address}
+                onChange={handleAddressChange}
+                placeholder='Enter an address or location'
+              />
+              <button type='submit'>Search Near Address</button>
+            </form>
+            <button type='button' onClick={handleSearchNearby}>Search Bathrooms Near Map Center</button>
+            <p>Searching Near:</p>
+            <p>{currentLocation} :</p>
+            <p className="address">{bathroomCount} bathrooms found </p>
+          </section>
 
-      <section className='map-section'>
-        <p>Drag the map to change the center location, then click 'Search Bathrooms Near Map Center' to see nearby bathrooms based on the new location or search by address using the search bar.</p>
-    <GoogleMap
-      zoom={15}
-      center={mapCenter}
-      onLoad={onMapLoad}
-      onDragEnd={onMapDragEnd}
-      mapContainerClassName='map-container'
-      options={{ gestureHandling: "greedy" }}
-    >
-      {bathrooms.map((bathroom, index) => (
-        <Marker
-          key={bathroom.place_id || index}
-          position={{ lat: bathroom.geometry.location.lat, lng: bathroom.geometry.location.lng }}
-          title={bathroom.name}
-          onClick={() => {
-            setSelectedBathroom(bathroom);
-          }}
-        />
-      ))}
+          <section className='map-section'>
+            <p>Drag the map to change the center location, then click 'Search Bathrooms Near Map Center' to see nearby bathrooms based on the new location or search by address using the search bar.</p>
+            <GoogleMap
+              zoom={15}
+              center={mapCenter}
+              onLoad={onMapLoad}
+              onDragEnd={onMapDragEnd}
+              mapContainerClassName='map-container'
+              options={{ gestureHandling: "greedy" }}
+            >
+              {bathrooms.map((bathroom, index) => (
+                <Marker
+                  key={bathroom.place_id || index}
+                  position={{ lat: bathroom.geometry.location.lat, lng: bathroom.geometry.location.lng }}
+                  title={bathroom.name}
+                  onClick={() => {
+                    setSelectedBathroom(bathroom);
+                  }}
+                />
+              ))}
 
-   {selectedBathroom && (
-   <InfoWindow
-   position={{ 
-     lat: selectedBathroom.geometry.location.lat, 
-     lng: selectedBathroom.geometry.location.lng 
-   }}
-   onCloseClick={() => {
-     setSelectedBathroom(null);
-   }}
- >
-   <div>
-     <h2>{selectedBathroom.name}</h2>
-     <p>{selectedBathroom.vicinity || selectedBathroom.formatted_address}</p>
-   </div>
- </InfoWindow>
- 
-  )}
-</GoogleMap>
-  </section>
-</div>
-  );}
-            
+              {selectedBathroom && (
+                <InfoWindow
+                  position={{ 
+                    lat: selectedBathroom.geometry.location.lat, 
+                    lng: selectedBathroom.geometry.location.lng 
+                  }}
+                  onCloseClick={() => {
+                    setSelectedBathroom(null);
+                  }}
+                >
+                  <div>
+                    <h2>{selectedBathroom.name}</h2>
+                    <p>{selectedBathroom.vicinity || selectedBathroom.formatted_address}</p>
+                  </div>
+                </InfoWindow>
+              )}
+            </GoogleMap>
+          </section>
+        </>
+      
+    </div>
+  );
+}
             
