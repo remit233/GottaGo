@@ -48,7 +48,7 @@ const Login = () => {
             Login
           </button>
         </form>
-        <button className="login-button" onClick={handleAuth0Login}>
+        <button className="auth-button" onClick={handleAuth0Login}>
           Login with Auth0
         </button>
       </div>
