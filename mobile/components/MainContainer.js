@@ -9,9 +9,9 @@ import ChatScreen from './screens/ChatScreen';
 import GameScreen from './screens/GameScreen';
 import ProfileScreen from './screens/ProfileScreen';
 
-import UserLogin from './screens/UserLogin';
-import Login from './screens/Login';
-import Register from './screens/Register';
+import UserLogin from './screens/LoginScreens/UserLogin';
+import Login from './screens/LoginScreens/Login';
+import Register from './screens/LoginScreens/Register';
 //Screen names
 const homeName = "Home";
 const chatName = "Chat";
