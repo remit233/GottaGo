@@ -2,8 +2,8 @@ import { Dimensions, ImageBackground, SafeAreaView, StyleSheet, Text, View } fro
 import React from "react";
 import { TouchableOpacity } from "react-native-gesture-handler";
 // const {height} = Dimensions.get("window");
-import Login from "./Login";
-import Register from "../Register";
+// import Login from "./Login";
+// import Register from "../Register";
 
 const UserLogin = ({navigation}) => {
     return(
@@ -14,7 +14,7 @@ const UserLogin = ({navigation}) => {
                         height: 400,
                     }} 
                     resizeMode="contain"
-                    source={require('./Images/GottaGologo1.png')}
+                    source={require('../Images/GottaGologo.png')}
                     />
             
             </View>

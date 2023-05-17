@@ -12,7 +12,7 @@ export default function Login({ navigation }){
                 height: 250,
             }} 
             resizeMode="contain"
-            source={require('./Images/GottaGologo1.png')}
+            source={require('../Images/GottaGologo.png')}
             />
 </View>
 
