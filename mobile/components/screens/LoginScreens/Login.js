@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { ImageBackground,Text,TextInput,StyleSheet, View } from 'react-native';
+import { ImageBackground,Text,TextInput,StyleSheet, View, TouchableOpacity } from 'react-native';
 import { onChange } from 'react-native-reanimated';
 class Login extends React.Component{
     state = {

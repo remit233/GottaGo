@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, ScrollView, Image, StyleSheet } from 'react-native';
+import { View, Text, ScrollView, Image, StyleSheet, TouchableOpacity } from 'react-native';
 
 const ProfileScreen = ({ navigation }) => {
   return (
@@ -22,8 +22,9 @@ const ProfileScreen = ({ navigation }) => {
         <Text style={styles.recentlyViewedTitle}>Recently Viewed Bathroom</Text>
       </View>
 
-      <View style={styles.settingContainer}>
+      <View style={styles.settingContainer}><TouchableOpacity>
         <Text style={styles.settingTitle}>Settings</Text>
+        </TouchableOpacity>
       </View>
 
       <View style={styles.registeredContainer}>

@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { Text,TextInput,StyleSheet, View ,ImageBackground,ScrollView} from 'react-native';
+import { TouchableOpacity,Text,TextInput,StyleSheet, View ,ImageBackground,ScrollView} from 'react-native';
 export default function Login(){
     return (
         <SafeAreaView>
