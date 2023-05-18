@@ -6,9 +6,12 @@ import './App.css';
 
 import Landing from '../Landing/Landing.js';
 import Login from '../Login/Login.js';
+import SignUp from '../SignUp/SignUp.js';
 import NotFound from '../NotFound/NotFound.js';
 import { Auth0Provider } from '@auth0/auth0-react';
 import useAuth from '../auth/useAuth.js'
+import Download from '../Download/Download.js';
+import AboutUs from '../AboutUs/AboutUs.js';
 
 function App() {
   const { isAuthenticated, login, logout, user } = useAuth();
@@ -22,6 +25,9 @@ function App() {
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route path="/login" element={<Login login={login} />} />
+          <Route path="/sign-up" element={<SignUp  />} />
+          <Route path="/download" element={<Download/>}/>
+          <Route path="aboutus" element={<AboutUs/>}/>
           <Route path="/*" element={<NotFound />} />
         </Routes>
         <Footer />

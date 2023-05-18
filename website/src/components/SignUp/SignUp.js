@@ -1,31 +1,71 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './SignUp.css';
-import Login from '../Login/Login';
-import { useNavigate } from 'react-router-dom';
-import useAuth from '../auth/useAuth';
+import useAuth from '../auth/useAuth.js';
 
 const SignUp = () => {
-  const { login, isAuthenticated } = useAuth();
-  const navigate = useNavigate();
+  const { ownSignup } = useAuth();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
 
-  React.useEffect(() => {
-    if (isAuthenticated) {
-      navigate('/');
+  const handleSignup = async (event) => {
+    event.preventDefault();
+    
+    if(password !== confirmPassword) {
+      alert("Passwords do not match!");
+      return;
     }
-  }, [isAuthenticated, navigate]);
 
-  const handleLogin = async () => {
-    await login();
+    await ownSignup(email, password, firstName, lastName);
   };
 
   return (
-    <div className="login-container">
-      <div className="login-content">
-        <h1>Sign up</h1>
-        <p>Use Auth0 to Sign up.</p>
-        <button className="login-button" onClick={handleLogin}>
-          Login with Auth0
-        </button>
+    <div className="signup-container">
+      <div className="signup-content">
+        <h1>Sign Up</h1>
+        <p>Please fill in this form to create an account.</p>
+        <form onSubmit={handleSignup}>
+          <input
+            type="text"
+            placeholder="First Name"
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+            required
+          />
+          <input
+            type="text"
+            placeholder="Last Name"
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+            required
+          />
+          <input
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+          <input
+            type="password"
+            placeholder="Confirm Password"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            required
+          />
+          <button type="submit" className="signup-button">
+            Sign Up
+          </button>
+        </form>
       </div>
     </div>
   );
