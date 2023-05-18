@@ -1,6 +1,8 @@
-import { Dimensions, ImageBackground, SafeAreaView, StyleSheet, Text, View } from "react-native";
+import { Dimensions, ImageBackground, SafeAreaView, StyleSheet, Text, View, TextInput } from "react-native";
 import React from "react";
 import { TouchableOpacity } from "react-native-gesture-handler";
+// import { createStackNavigator } from "@react-navigation/stack";
+
 // const {height} = Dimensions.get("window");
 // import Login from "./Login";
 // import Register from "../Register";
