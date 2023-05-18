@@ -14,7 +14,7 @@ export default function Landing() {
       return (
         <div className="landing">
           <Home />
-          <AboutUs />
+          
           <Download />
         </div>
       );
@@ -22,7 +22,7 @@ export default function Landing() {
       return (
         <div className="landing">
           <UserLanding /> {/* Render the UserLanding component */}
-          <AboutUs />
+          
           <Download />
         </div>
       );

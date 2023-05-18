@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { GoogleMap, useLoadScript, Marker, InfoWindow } from '@react-google-maps/api';
 import './Home.css';
+import Filter from '../Filter/Filter.js';
 
 
 
@@ -21,6 +22,7 @@ export default function Home() {
   const [currentLocation, setCurrentLocation] = useState('');
   const [selectedBathroom, setSelectedBathroom] = useState(null);
   const [loading] = useState(false);
+  
   
 
   
@@ -124,9 +126,14 @@ export default function Home() {
               <button type='submit'>Search Near Address</button>
             </form>
             <button type='button' onClick={handleSearchNearby}>Search Bathrooms Near Map Center</button>
+            <div className="filter-container">
+            <Filter/>
+          </div>
+          <div className="important-info"></div>
             <p>Searching Near:</p>
             <p>{currentLocation} :</p>
             <p className="address">{bathroomCount} bathrooms found </p>
+            <div/>
           </section>
 
           <section className='map-section'>
