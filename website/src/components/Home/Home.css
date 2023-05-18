@@ -106,3 +106,91 @@
   margin-bottom: 10px;
 }
 
+.info-window {
+  background-color: #f9f9f9;
+  color: #333;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.info-window h2 {
+  margin: 0 0 8px;
+  font-size: 18px;
+}
+
+.info-window p {
+  margin: 0 0 4px;
+}
+
+.rating-container {
+  margin-bottom: 12px;
+}
+
+.rating-container label {
+  display: block;
+  margin-bottom: 4px;
+  font-weight: bold;
+}
+
+.star-rating {
+  margin-top: 4px;
+}
+
+.review-container {
+  margin-bottom: 16px;
+}
+
+.review-container label {
+  display: block;
+  margin-bottom: 4px;
+  font-weight: bold;
+}
+
+.review-textarea {
+  width: 90%;
+  height: 80px;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  resize: none;
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.suggest-tags-button,
+.more-info-button {
+  background-color: #8a72ff;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  margin: 10px;
+  font-size: 14px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.suggest-tags-button:hover,
+.more-info-button:hover {
+  background-color: #6148d5;
+  
+}
+
+.suggest-new-button {
+  color: white;
+  text-decoration: none;
+}
+
+.suggest-new-button:hover {
+  text-decoration: none;
+}
+
+
