@@ -12,6 +12,7 @@ import { Auth0Provider } from '@auth0/auth0-react';
 import useAuth from '../auth/useAuth.js'
 import Download from '../Download/Download.js';
 import AboutUs from '../AboutUs/AboutUs.js';
+import BathroomForm from '../BathroomForm/BathroomForm.js';
 
 function App() {
   const { isAuthenticated, login, logout, user } = useAuth();
@@ -28,6 +29,8 @@ function App() {
           <Route path="/sign-up" element={<SignUp  />} />
           <Route path="/download" element={<Download/>}/>
           <Route path="aboutus" element={<AboutUs/>}/>
+          <Route path="/suggest-bathroom" element={<BathroomForm/>}/>
+          
           <Route path="/*" element={<NotFound />} />
         </Routes>
         <Footer />
