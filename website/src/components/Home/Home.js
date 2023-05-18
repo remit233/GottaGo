@@ -1,6 +1,13 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { GoogleMap, useLoadScript, Marker, InfoWindow } from '@react-google-maps/api';
 import './Home.css';
+import Filter from '../Filter/Filter.js';
+
+
+
+
+
+const libraries = ['places'];
 
 export default function Home() {
   const [userLatitude, setUserLatitude] = useState(40.768497649503715);
@@ -14,11 +21,15 @@ export default function Home() {
   const [bathroomCount, setBathroomCount] = useState(0);
   const [currentLocation, setCurrentLocation] = useState('');
   const [selectedBathroom, setSelectedBathroom] = useState(null);
+  const [loading] = useState(false);
+  
+  
 
+  
 
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: 'AIzaSyACMRwb-sr4h4K3RPcb48mCe58UrBn64t8',
-    libraries: ['places'],
+    libraries
   });
 
   const onMapLoad = useCallback((map) => {
@@ -34,6 +45,7 @@ export default function Home() {
   }, []);
 
   const fetchBathrooms = async (latitude, longitude) => {
+    
     const apiUrl = `http://localhost:3001/bathrooms?lat=${latitude}&lng=${longitude}`;
     const response = await fetch(apiUrl);
     const data = await response.json();
@@ -43,6 +55,7 @@ export default function Home() {
     const location = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=AIzaSyACMRwb-sr4h4K3RPcb48mCe58UrBn64t8`);
     const locationData = await location.json();
     setCurrentLocation(locationData.results[0].formatted_address);
+    
   };
   
 
@@ -88,73 +101,83 @@ export default function Home() {
   };
 
   if (loadError) return <div>Error loading maps</div>;
-  if (!isLoaded) return <div>Loading...</div>;
+  if (loading || !isLoaded) return <div>Loading...</div>;
+
 
   return (
     <div className='home'>
-      <header className='header'>
-        <h1>Find Nearby Public Restrooms</h1>
-      </header>
+      
+        <>
+          <header className='header'>
+            <h1>Find Nearby Public Restrooms</h1>
+          </header>
 
-      <section className='search-section'>
-        <h2>Search by address:</h2>
-        <form className='search-form' onSubmit={handleSubmit}>
-          <input
-            type='text'
-            name='search'
-            ref={searchInputRef}
-            value={address}
-            onChange={handleAddressChange}
-            placeholder='Enter an address or location'
-          />
-          <button type='submit'>Search Near Address</button>
-        </form>
-        <button type='button' onClick={handleSearchNearby}>Search Bathrooms Near Map Center</button>
-        <p>Searching Near:</p>
-        <p>{currentLocation} :</p>
-         <p className="address">{bathroomCount} bathrooms found </p>
-      </section>
+          <section className='search-section'>
+            <h2>Search by address:</h2>
+            <form className='search-form' onSubmit={handleSubmit}>
+              <input
+                type='text'
+                name='search'
+                ref={searchInputRef}
+                value={address}
+                onChange={handleAddressChange}
+                placeholder='Enter an address or location'
+              />
+              <button type='submit'>Search Near Address</button>
+            </form>
+            <button type='button' onClick={handleSearchNearby}>Search Bathrooms Near Map Center</button>
+            <div className="filter-container">
+            <Filter/>
+          </div>
+          <div className="important-info"></div>
+            <p>Searching Near:</p>
+            <p>{currentLocation} :</p>
+            <p className="address">{bathroomCount} bathrooms found </p>
+            <div/>
+          </section>
 
-      <section className='map-section'>
-        <p>Drag the map to change the center location, then click 'Search Bathrooms Near Map Center' to see nearby bathrooms based on the new location or search by address using the search bar.</p>
-    <GoogleMap
-      zoom={15}
-      center={mapCenter}
-      onLoad={onMapLoad}
-      onDragEnd={onMapDragEnd}
-      mapContainerClassName='map-container'
-    >
-      {bathrooms.map((bathroom, index) => (
-        <Marker
-          key={bathroom.place_id || index}
-          position={{ lat: bathroom.geometry.location.lat, lng: bathroom.geometry.location.lng }}
-          title={bathroom.name}
-          onClick={() => {
-            setSelectedBathroom(bathroom);
-          }}
-        />
-      ))}
+          <section className='map-section'>
+            <p>Drag the map to change the center location, then click 'Search Bathrooms Near Map Center' to see nearby bathrooms based on the new location or search by address using the search bar.</p>
+            <GoogleMap
+              zoom={15}
+              center={mapCenter}
+              onLoad={onMapLoad}
+              onDragEnd={onMapDragEnd}
+              mapContainerClassName='map-container'
+              options={{ gestureHandling: "greedy" }}
+            >
+              {bathrooms.map((bathroom, index) => (
+                <Marker
+                  key={bathroom.place_id || index}
+                  position={{ lat: bathroom.geometry.location.lat, lng: bathroom.geometry.location.lng }}
+                  title={bathroom.name}
+                  onClick={() => {
+                    setSelectedBathroom(bathroom);
+                  }}
+                />
+              ))}
 
-   {selectedBathroom && (
-   <InfoWindow
-   position={{ 
-     lat: selectedBathroom.geometry.location.lat, 
-     lng: selectedBathroom.geometry.location.lng 
-   }}
-   onCloseClick={() => {
-     setSelectedBathroom(null);
-   }}
- >
-   <div>
-     <h2>{selectedBathroom.name}</h2>
-     <p>{selectedBathroom.vicinity || selectedBathroom.formatted_address}</p>
-   </div>
- </InfoWindow>
- 
-  )}
-</GoogleMap>
-  </section>
-</div>
-  );}
-            
+              {selectedBathroom && (
+                <InfoWindow
+                  position={{ 
+                    lat: selectedBathroom.geometry.location.lat, 
+                    lng: selectedBathroom.geometry.location.lng 
+                  }}
+                  onCloseClick={() => {
+                    setSelectedBathroom(null);
+                  }}
+                >
+                  <div>
+                    <h2>{selectedBathroom.name}</h2>
+                    <p>{selectedBathroom.vicinity || selectedBathroom.formatted_address}</p>
+                  </div>
+                </InfoWindow>
+              )}
+            </GoogleMap>
+          </section>
+        </>
+      
+    </div>
+  );
+}
             

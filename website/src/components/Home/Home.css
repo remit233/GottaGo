@@ -5,7 +5,7 @@
   grid-template-rows: auto 1fr;
   gap: 10px;
   height: 100vh;
-  padding: 20px;
+  padding: 0 20px 70px; 
   box-sizing: border-box;
 }
 
@@ -27,15 +27,19 @@
   grid-column: 1 / 2;
   grid-row: 2 / 3;
   overflow: auto;
+  margin-right: 20px;
 }
 
 .search-section h2 {
   font-size: 24px;
-  margin-bottom: 10px;
+  text-align: left;
+  margin-bottom: 20px;
   color: #4c427a;
 }
 .search-section p{
   font-size: 24px;
+  text-align: left;
+  margin-bottom: 10px;
 }
 
 .search-form {
@@ -61,6 +65,10 @@
   border-radius: 4px;
   cursor: pointer;
   margin-top: 10px;
+  display: block;
+  width: 100%;
+  margin-bottom: 25px;
+
 }
 
 .search-form button:hover, 
@@ -92,5 +100,9 @@
   font-size: 26px;
   color: #4c427a;
   margin-top: 10px;
+}
+.search-form input,
+.search-form button {
+  margin-bottom: 10px;
 }
 
