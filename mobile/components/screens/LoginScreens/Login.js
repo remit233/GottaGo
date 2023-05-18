@@ -47,7 +47,7 @@ class Login extends React.Component{
             style={styles.textbox}/>
             </View>    
             
-            <View style={{marginVertical: 33}}>
+            <View style={{marginVertical: 22}}>
             <TouchableOpacity
             style={styles.button}
             title="Login" onPress={() => loginhandler(this.state)}
@@ -56,7 +56,7 @@ class Login extends React.Component{
                 fontWeight: 'bold'}}>Login</Text>
             </TouchableOpacity>
 
-            <View style={{marginVertical: 33}}>
+            <View style={{marginVertical: 22}}>
             <TouchableOpacity
             style={styles.button}
             title="Register" onPress={() => navigation.navigate("Register")}
