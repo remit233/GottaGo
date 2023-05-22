@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { GoogleMap, useLoadScript, Marker, InfoWindow } from '@react-google-maps/api';
 import './Home.css';
 import Filter from '../Filter/Filter.js';
-import StarRatingComponent from 'react-star-rating-component';
+// import StarRatingComponent from 'react-star-rating-component';
 import { Link } from 'react-router-dom';
 
 
@@ -125,7 +125,7 @@ export default function Home() {
 
   return (
     <div className='home'>
-      <>
+      
         <header className='header'>
           <h1>Find Nearby Public Restrooms</h1>
         </header>
@@ -198,13 +198,7 @@ export default function Home() {
                   <p>{selectedBathroom.vicinity || selectedBathroom.formatted_address}</p>
                   <div className="rating-container">
                     <label>Rating:</label>
-                    <StarRatingComponent
-                      name={`rating-${selectedBathroom.place_id}`}
-                      value={ratings[selectedBathroom.place_id] || 0}
-                      starCount={5}
-                      onStarClick={(rating) => handleRatingChange(selectedBathroom.place_id, rating)}
-                      className="star-rating"
-                    />
+                    
                   </div>
                   <div className="review-container">
                     <label>Review:</label>
@@ -231,7 +225,7 @@ export default function Home() {
             )}
           </GoogleMap>
         </section>
-      </>
+      
     </div>
   );
 }
