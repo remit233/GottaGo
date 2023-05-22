@@ -7,16 +7,16 @@
 # Mobile Development
 
 * Home Screen 
-![alt text](https://github.com/remit233/GottaGo/blob/master/READMEASSETS/Home_search.png)
-![alt text](https://github.com/remit233/GottaGo/blob/master/READMEASSETS/Home_coordinate.png)
+* ![alt text](https://github.com/remit233/GottaGo/blob/master/READMEASSETS/Home_search.png)
+* ![alt text](https://github.com/remit233/GottaGo/blob/master/READMEASSETS/Home_coordinate.png)
 
 * Game Screen(Login/Signup)
-![alt text](https://github.com/remit233/GottaGo/blob/master/READMEASSETS/Game_login.png)
+* ![alt text](https://github.com/remit233/GottaGo/blob/master/READMEASSETS/Game_login.png)
 
 * Community Screen
-![alt text](https://github.com/remit233/GottaGo/blob/master/READMEASSETS/Chat.png)
+* ![alt text](https://github.com/remit233/GottaGo/blob/master/READMEASSETS/Chat.png)
 * Profile Screen
-![alt text](https://github.com/remit233/GottaGo/blob/master/READMEASSETS/Profile.png)
+* ![alt text](https://github.com/remit233/GottaGo/blob/master/READMEASSETS/Profile.png)
 
 # Website Development
 ![alt text]()
