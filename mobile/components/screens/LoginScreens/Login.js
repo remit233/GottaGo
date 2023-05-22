@@ -2,44 +2,77 @@ import * as React from 'react';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { ImageBackground,Text,TextInput,StyleSheet, View } from 'react-native';
-export default function Login({ navigation }){
+import { onChange } from 'react-native-reanimated';
+class Login extends React.Component{
+    state = {
+        email: "",
+        password: "",
+    };
+    onChange = (email) => (text) => this.setState({[email]: text});
+
+    render() {
+        const { email, password } = this.state;
+        const { navigation, loginhandler } = this.props;
+
+        return (
+            <SafeAreaView>
+            <View>
+            <ImageBackground
+                style={{
+                    height: 250,
+                }} 
+                resizeMode="contain"
+                source={require('../Images/GottaGologo.png')}
+                />
+    </View>
     
-    return (
-        <SafeAreaView>
-        <View>
-        <ImageBackground
-            style={{
-                height: 250,
-            }} 
-            resizeMode="contain"
-            source={require('../Images/GottaGologo.png')}
-            />
-</View>
+            <View style={{alignItems: "center"}}>
+            <Text style={styles.title}>Login Here</Text>
+            </View>
+    
+            <View style={{marginVertical: 33}}>
+            <TextInput 
+            placeholder="Email"
+            onChange={this.onChange("email")}
+            value = {email}
+            style={styles.textbox}/>
+            </View>
+    
+            <View >
+            <TextInput 
+            placeholder="Password"
+            onChange={this.onChange("Password")}
+            secureTextEntry={true}
+            value={password}
+            style={styles.textbox}/>
+            </View>    
+            
+            <View style={{marginVertical: 22}}>
+            <TouchableOpacity
+            style={styles.button}
+            title="Login" onPress={() => loginhandler(this.state)}
+            >
+            <Text style={{
+                fontWeight: 'bold'}}>Login</Text>
+            </TouchableOpacity>
 
-        <View style={{alignItems: "center"}}>
-        <Text style={styles.title}>Login Here</Text>
-        </View>
+            <View style={{marginVertical: 22}}>
+            <TouchableOpacity
+            style={styles.button}
+            title="Register" onPress={() => navigation.navigate("Register")}
+            >
+            <Text style={{
+                fontWeight: 'bold'}}>Register</Text>
+            </TouchableOpacity>
+            </View>
+            </View>  
+        </SafeAreaView>
+        );
+    }
 
-        <View style={{marginVertical: 33}}>
-        <TextInput placeholder="Email"
-        style={styles.textbox}/>
-        </View>
+    
 
-        <View >
-        <TextInput placeholder="Password"
-        style={styles.textbox}/>
-        </View>    
-        
-        <View style={{marginVertical: 33}}>
-        <TouchableOpacity
-        style={styles.button}>
-        <Text style={{
-            fontWeight: 'bold'}}>Login</Text>
-        </TouchableOpacity>
-        </View>  
-    </SafeAreaView>);
-
-};
+}
 
 const styles = StyleSheet.create({
     title:{
@@ -66,3 +99,4 @@ const styles = StyleSheet.create({
     }
 
 });
+export default Login;

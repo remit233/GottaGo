@@ -5,7 +5,7 @@
   grid-template-rows: auto 1fr;
   gap: 10px;
   height: 100vh;
-  padding: 20px;
+  padding: 0 20px 70px; 
   box-sizing: border-box;
 }
 
@@ -27,15 +27,19 @@
   grid-column: 1 / 2;
   grid-row: 2 / 3;
   overflow: auto;
+  margin-right: 20px;
 }
 
 .search-section h2 {
   font-size: 24px;
-  margin-bottom: 10px;
+  text-align: left;
+  margin-bottom: 20px;
   color: #4c427a;
 }
 .search-section p{
   font-size: 24px;
+  text-align: left;
+  margin-bottom: 10px;
 }
 
 .search-form {
@@ -61,6 +65,10 @@
   border-radius: 4px;
   cursor: pointer;
   margin-top: 10px;
+  display: block;
+  width: 100%;
+  margin-bottom: 25px;
+
 }
 
 .search-form button:hover, 
@@ -93,4 +101,96 @@
   color: #4c427a;
   margin-top: 10px;
 }
+.search-form input,
+.search-form button {
+  margin-bottom: 10px;
+}
+
+.info-window {
+  background-color: #f9f9f9;
+  color: #333;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.info-window h2 {
+  margin: 0 0 8px;
+  font-size: 18px;
+}
+
+.info-window p {
+  margin: 0 0 4px;
+}
+
+.rating-container {
+  margin-bottom: 12px;
+}
+
+.rating-container label {
+  display: block;
+  margin-bottom: 4px;
+  font-weight: bold;
+}
+
+.star-rating {
+  margin-top: 4px;
+}
+
+.review-container {
+  margin-bottom: 16px;
+}
+
+.review-container label {
+  display: block;
+  margin-bottom: 4px;
+  font-weight: bold;
+}
+
+.review-textarea {
+  width: 90%;
+  height: 80px;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  resize: none;
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.suggest-tags-button,
+.more-info-button {
+  background-color: #8a72ff;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  margin: 10px;
+  font-size: 14px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.suggest-tags-button:hover,
+.more-info-button:hover {
+  background-color: #6148d5;
+  
+}
+
+.suggest-new-button {
+  color: white;
+  text-decoration: none;
+}
+
+.suggest-new-button:hover {
+  text-decoration: none;
+}
+
 
