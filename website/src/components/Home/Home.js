@@ -26,7 +26,7 @@ export default function Home() {
   const [review, setReview] = useState('');
 
   const { isLoaded, loadError } = useLoadScript({
-    googleMapsApiKey: 'AIzaSyACMRwb-sr4h4K3RPcb48mCe58UrBn64t8',
+    googleMapsApiKey: '',
     libraries
   });
 
